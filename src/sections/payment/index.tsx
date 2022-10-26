@@ -1,5 +1,10 @@
 import { FC } from 'react'
+import style from './payment.module.css'
 
 export const Payment: FC = (): JSX.Element => {
-	return <h1>Pagamentos</h1>
+	return (
+		<section className={style.payment}>
+			<div className="container"></div>
+		</section>
+	)
 }
