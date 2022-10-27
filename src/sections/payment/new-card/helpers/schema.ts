@@ -19,7 +19,7 @@ export const schemaCreditCard: Yup.SchemaOf<CreditCardForm> = Yup.object().shape
 			}
 			return false
 		}),
-	cvv: Yup.string().required('Obrigatório'),
+	cvv: Yup.string().min(3, 'Mínimo três dígitos.').required('Obrigatório'),
 	validate: Yup.string()
 		.required('Obrigatório')
 		.test('validate', 'Data inválida', function (value: string | undefined) {
