@@ -3,6 +3,10 @@
 	border-width: 1px solid;
 }
 
+.error::placeholder {
+	color: lightcoral;
+}
+
 .wrapper {
 	position: relative;
 }
