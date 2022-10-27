@@ -20,5 +20,14 @@ export const schemaCreditCard: Yup.SchemaOf<CreditCardForm> = Yup.object().shape
 			return false
 		}),
 	cvv: Yup.string().required('Obrigatório'),
-	validate: Yup.string().required('Obrigatório')
+	validate: Yup.string()
+		.required('Obrigatório')
+		.test('validate', 'Data inválida', function (value: string | undefined) {
+			const date = value?.split('/')
+			if (date) {
+				const check = cardValidator.checkValidate(date[0], date[1])
+				return check
+			}
+			return false
+		})
 })
