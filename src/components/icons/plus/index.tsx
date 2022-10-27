@@ -12,7 +12,7 @@ export const Plus: FC<Props> = ({ className, ...props }): JSX.Element => {
 			className={className}
 			{...props}
 		>
-			<path strokeLinecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+			<path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 		</svg>
 	)
 }
