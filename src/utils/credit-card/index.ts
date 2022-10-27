@@ -1,6 +1,6 @@
 import { CreditCardModel } from './types'
+import { DateUtils } from '../date'
 import Validator from 'card-validator'
-import moment from 'moment'
 
 export class CreditCardUtils implements CreditCardModel {
 	checkNumber(cardNumber: string): boolean {
@@ -9,9 +9,11 @@ export class CreditCardUtils implements CreditCardModel {
 	}
 
 	checkValidate(month: string, year: string): boolean {
-		const currentMonth = moment().month() + 1
+		const dateUtils = new DateUtils()
 
-		const currentYear = moment().year()
+		const currentMonth = dateUtils.getMonth()
+
+		const currentYear = dateUtils.getYear()
 
 		if (parseInt(year) > currentYear) {
 			return true
