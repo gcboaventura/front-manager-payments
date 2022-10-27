@@ -1,0 +1,21 @@
+.error {
+	border-color: lightcoral;
+	border-width: 1px solid;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.iconWrapper {
+	position: absolute;
+	top: 50%;
+	left: 95%;
+	transform: translateY(-50%);
+}
+
+.iconWrapper svg {
+	color: gray;
+	width: 20px;
+	height: 20px;
+}

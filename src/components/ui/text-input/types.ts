@@ -1,18 +1,14 @@
-import { InputHTMLAttributes, ReactNode } from 'react'
+import { ReactNode, InputHTMLAttributes } from 'react'
+import { FormControlProps } from 'react-bootstrap'
 
 export type Variant = 'error'
 
-export interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends FormControlProps {
 	variant?: Variant
 	width?: string | number
 	error?: boolean
 	label?: string
 	icon?: ReactNode
-}
-
-export interface StyledInputProps {
-	$variant?: Variant
-	$width?: string | number
-	$error?: boolean
-	$icon?: boolean
+	name: string
+	required?: boolean
 }
