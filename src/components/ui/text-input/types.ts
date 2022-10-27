@@ -1,4 +1,4 @@
-import { ReactNode, InputHTMLAttributes } from 'react'
+import { ReactNode } from 'react'
 import { FormControlProps } from 'react-bootstrap'
 
 export type Variant = 'error'

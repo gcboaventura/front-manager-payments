@@ -21,7 +21,7 @@ export const TextInput: FC<Props> = ({
 	const hasError = !!(meta.touched && meta.error)
 
 	return (
-		<>
+		<div>
 			{label && <Label error={hasError} children={label} />}
 			<div className={style.wrapper}>
 				<Form.Control
@@ -30,9 +30,9 @@ export const TextInput: FC<Props> = ({
 					{...field}
 					{...props}
 				/>
-				{icon && <div className={style.iconWrapper}>{icon}</div>}
+				{icon && icon}
 			</div>
 			{hasError && <ErrorMessage children={meta.error || 'Erro'} error={hasError} />}
-		</>
+		</div>
 	)
 }
