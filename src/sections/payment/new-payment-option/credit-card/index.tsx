@@ -10,7 +10,7 @@ import {
 	LockClosed,
 	MaskInput,
 	Plus
-} from '../../../../components'
+} from '@/components'
 import style from './creditcard.module.css'
 
 export const CreditCard: FC = (): JSX.Element => {

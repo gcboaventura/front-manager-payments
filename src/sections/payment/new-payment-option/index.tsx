@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Accordion, Card } from 'react-bootstrap'
 import { useAccordionButton } from 'react-bootstrap/AccordionButton'
-import { Button } from '../../../components'
+import { Button } from '@/components'
 import { CreditCard } from './credit-card'
 import { PayPal } from './paypal'
 

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Button, Email, Form, Plus, TextInput } from '../../../../components'
+import { Button, Email, Form, Plus, TextInput } from '@/components'
 import { schemaPayPal } from './schema'
 import { FormValues } from './types'
 

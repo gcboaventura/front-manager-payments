@@ -1,10 +1,10 @@
 import * as Yup from 'yup'
-import { CreditCardUtils } from '../../../../utils'
-import { CreditCardForm } from './types'
+import { CreditCardUtils } from '@/utils'
+import { FormValues } from './types'
 
 const cardValidator = new CreditCardUtils()
 
-export const schemaCreditCard: Yup.SchemaOf<CreditCardForm> = Yup.object().shape({
+export const schemaCreditCard: Yup.SchemaOf<FormValues> = Yup.object().shape({
 	card_number: Yup.string()
 		.required('Obrigatório')
 		.test('card_number', 'Cartão inválido', function (value: string | undefined): boolean {
