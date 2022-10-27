@@ -11,7 +11,7 @@ export const Payment: FC = (): JSX.Element => {
 				<Row className="col-md-12 pt-5 pb-5">
 					<h1>Logo</h1>
 				</Row>
-				<Row className=" align-items-start justify-content-between">
+				<Row className="align-items-start justify-content-between">
 					<div className="col-md-6">
 						<NewPaymentOption />
 					</div>
