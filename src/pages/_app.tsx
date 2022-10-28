@@ -14,7 +14,8 @@ const App = ({ Component, pageProps }: AppProps) => {
 		<>
 			<Head>
 				<meta charSet="utf-8" />
-				<title>Pagamentos</title>
+				<title>Primage - pagamentos</title>
+				<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 
