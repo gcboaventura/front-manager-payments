@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'react-credit-cards/es/styles-compiled.css'
 import '@/style/global.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
