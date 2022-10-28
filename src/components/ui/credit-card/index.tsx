@@ -7,7 +7,10 @@ export const CreditCardComponent: FC<Props> = ({
 	focused,
 	name,
 	number,
-	expiry
+	expiry,
+	...props
 }): JSX.Element => {
-	return <Cards cvc={cvc} name={name} number={number} expiry={expiry} focused={focused} />
+	return (
+		<Cards cvc={cvc} name={name} number={number} expiry={expiry} focused={focused} {...props} />
+	)
 }
