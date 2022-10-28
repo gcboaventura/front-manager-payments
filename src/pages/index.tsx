@@ -1,10 +1,11 @@
 import { FC } from 'react'
-import { Payment } from '@/sections'
+import { Payment, PlanData } from '@/sections'
 
 const Main: FC = (): JSX.Element => {
 	return (
 		<>
-			<Payment />
+			<PlanData />
+			{/* <Payment /> */}
 		</>
 	)
 }
