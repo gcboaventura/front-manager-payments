@@ -1,9 +1,10 @@
+import { FC } from 'react'
 import { About, Caption, Pencil, Text, Title } from '@/components'
 import { MoneyUtils } from '@/utils'
-import { FC } from 'react'
+import { Props } from './types'
 import style from './currentplan.module.css'
 
-export const CurrentPlan: FC = (): JSX.Element => {
+export const CurrentPlan: FC<Props> = ({ aboutPlan, editPlan }): JSX.Element => {
 	const moneyHelper = new MoneyUtils()
 
 	return (
@@ -14,8 +15,8 @@ export const CurrentPlan: FC = (): JSX.Element => {
 				<Text className="h6 text-secondary">mensal</Text>
 			</div>
 			<div className="d-flex col-md-2 align-items-start justify-content-end">
-				<About className={style.svg} />
-				<Pencil className={style.svg} />
+				<About className={style.svg} onClick={aboutPlan} />
+				<Pencil className={style.svg} onClick={editPlan} />
 			</div>
 		</div>
 	)

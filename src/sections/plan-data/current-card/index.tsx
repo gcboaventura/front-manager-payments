@@ -3,7 +3,7 @@ import { CreditCardComponent, Pencil, Trash } from '@/components'
 import { Props } from './types'
 import style from './currentcard.module.css'
 
-export const CurrentCard: FC<Props> = (): JSX.Element => {
+export const CurrentCard: FC<Props> = ({ deleteCard, editCard }): JSX.Element => {
 	return (
 		<div className="d-flex align-items-start justify-content-center">
 			<div>
@@ -18,10 +18,10 @@ export const CurrentCard: FC<Props> = (): JSX.Element => {
 			</div>
 			<div>
 				<div className="bg-white rounded-3 p-2 mb-2">
-					<Pencil className={style.svg} />
+					<Pencil className={style.svg} onClick={editCard} />
 				</div>
 				<div className="bg-white rounded-3 p-2 mb-2">
-					<Trash className={style.svg} />
+					<Trash className={style.svg} onClick={deleteCard} />
 				</div>
 			</div>
 		</div>
