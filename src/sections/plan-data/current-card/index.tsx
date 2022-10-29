@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import { CreditCardComponent, Pencil } from '@/components'
+import { CreditCardComponent, Pencil, Trash } from '@/components'
 import { Props } from './types'
 import style from './currentcard.module.css'
 
 export const CurrentCard: FC<Props> = (): JSX.Element => {
 	return (
 		<div className="d-flex align-items-start justify-content-center">
-			<div className="col-md-7">
+			<div>
 				<CreditCardComponent
 					expiry={'10/2026'}
 					name="Guilherme de Carvalho Boaventura"
@@ -16,8 +16,13 @@ export const CurrentCard: FC<Props> = (): JSX.Element => {
 					focused="name"
 				/>
 			</div>
-			<div className="d-flex flex-column bg-white rounded-3 p-2  align-items-center justify-content-between">
-				<Pencil className={style.svg} />
+			<div>
+				<div className="bg-white rounded-3 p-2 mb-2">
+					<Pencil className={style.svg} />
+				</div>
+				<div className="bg-white rounded-3 p-2 mb-2">
+					<Trash className={style.svg} />
+				</div>
 			</div>
 		</div>
 	)
