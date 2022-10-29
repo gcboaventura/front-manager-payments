@@ -4,8 +4,9 @@ import { useAccordionButton } from 'react-bootstrap/AccordionButton'
 import { Button } from '@/components'
 import { CreditCardForm } from '../credit-card'
 import { PayPal } from '../paypal'
+import { Props } from './types'
 
-export const NewPaymentOption: FC = (): JSX.Element => {
+export const NewPaymentOption: FC<Props> = ({ type, handleSubmit }): JSX.Element => {
 	const CustomToggle = (props: any) => {
 		const decoratedOnClick = useAccordionButton(props.eventKey)
 		return (
@@ -46,7 +47,7 @@ export const NewPaymentOption: FC = (): JSX.Element => {
 					</CustomToggle>
 					<Accordion.Collapse eventKey="1">
 						<Card.Body>
-							<CreditCardForm />
+							<CreditCardForm handleSubmit={handleSubmit} type={type} />
 						</Card.Body>
 					</Accordion.Collapse>
 				</Card>

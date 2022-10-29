@@ -5,6 +5,7 @@ import { CurrentPlan } from './current-plan'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Modal } from '@/components'
+import { NewPaymentOption } from '../payment/new-payment-option'
 import { AboutPlan, DeleteCreditCard, EditCreditCard, EditPlan } from './screen-actions'
 import style from './plandata.module.css'
 
@@ -48,6 +49,12 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const handleRegisterCreditCard = (): void => {}
 
+	const handleAddPayment = (): void => {
+		setBody(<NewPaymentOption type="register" handleSubmit={(values: any) => {}} />)
+		setTitle('Adicionar pagamento')
+		setShow(true)
+	}
+
 	return (
 		<>
 			<section className={style.section}>
@@ -61,7 +68,11 @@ export const PlanData: FC = (): JSX.Element => {
 							<CurrentPlan aboutPlan={handleAboutPlan} editPlan={handleEditPlan} />
 						</div>
 						<div className="col-md-6">
-							<CurrentCard deleteCard={handleDeleteCreditCard} editCard={handleEditCreditCard} />
+							<CurrentCard
+								addPayment={handleAddPayment}
+								deleteCard={handleDeleteCreditCard}
+								editCard={handleEditCreditCard}
+							/>
 						</div>
 					</Row>
 					<div className="col-md-12">

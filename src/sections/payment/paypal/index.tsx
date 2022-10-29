@@ -9,7 +9,8 @@ export const PayPal: FC = (): JSX.Element => {
 			onSubmit={(values: FormValues) => console.log(values)}
 			initialValues={{ paypal_email: '' }}
 			validationSchema={schemaPayPal}
-			children={
+		>
+			{() => (
 				<>
 					<TextInput
 						label="E-mail Paypal"
@@ -25,7 +26,7 @@ export const PayPal: FC = (): JSX.Element => {
 						<Button type="submit" variant="outline-primary" icon={<Plus />} children="Adicionar" />
 					</div>
 				</>
-			}
-		/>
+			)}
+		</Form>
 	)
 }
