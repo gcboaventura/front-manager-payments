@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { Option, Props } from './types'
 import { useField } from 'formik'
 import { Form } from 'react-bootstrap'
@@ -15,6 +15,7 @@ export const Select: FC<Props> = ({
 	name,
 	required,
 	options,
+	onChangeVal,
 	...props
 }): JSX.Element => {
 	const [field, meta] = useField(name || 'name')
@@ -31,6 +32,10 @@ export const Select: FC<Props> = ({
 					required={required}
 					{...field}
 					{...props}
+					onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+						field.onChange(event)
+						onChangeVal && onChangeVal(event.target.value)
+					}}
 				>
 					{options.map((x: Option) => (
 						<option key={x.value} value={x.value}>

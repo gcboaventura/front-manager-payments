@@ -11,6 +11,7 @@ export interface Props extends FormSelectProps {
 	name: string
 	required?: boolean
 	options: Option[]
+	onChangeVal?: (value: any) => void
 }
 
 export interface Option {
