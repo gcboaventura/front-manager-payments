@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Row } from 'react-bootstrap'
 import { schemaCreditCard } from './shema'
-import { FormValues } from './types'
+import { FormValues, Props } from './types'
 import {
 	Button,
 	Calendar,
@@ -9,21 +9,28 @@ import {
 	Form,
 	LockClosed,
 	MaskInput,
+	Pencil,
 	Plus
 } from '@/components'
 import style from './creditcard.module.css'
 
-export const CreditCard: FC = (): JSX.Element => {
+export const CreditCardForm: FC<Props> = ({ initialValues, handleSubmit, type }): JSX.Element => {
 	return (
 		<Form<FormValues>
-			initialValues={{
-				card_number: '',
-				cvv: '',
-				validate: ''
-			}}
-			onSubmit={(values: FormValues) => console.log(values)}
+			initialValues={
+				initialValues
+					? initialValues
+					: {
+							name: '',
+							card_number: '',
+							cvv: '',
+							validate: ''
+					  }
+			}
+			onSubmit={(values: FormValues) => handleSubmit(values)}
 			validationSchema={schemaCreditCard}
-			children={
+		>
+			{() => (
 				<>
 					<MaskInput
 						label="Número do cartão"
@@ -71,10 +78,15 @@ export const CreditCard: FC = (): JSX.Element => {
 							</span>
 						</div>
 
-						<Button type="submit" variant="outline-primary" icon={<Plus />} children="Adicionar" />
+						<Button
+							type="submit"
+							variant="outline-primary"
+							icon={type === 'register' ? <Plus /> : <Pencil />}
+							children={type === 'register' ? 'Adicionar' : 'Editar'}
+						/>
 					</div>
 				</>
-			}
-		/>
+			)}
+		</Form>
 	)
 }

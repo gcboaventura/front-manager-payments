@@ -5,6 +5,7 @@ import { CurrentPlan } from './current-plan'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Modal } from '@/components'
+import { AboutPlan, DeleteCreditCard, EditCreditCard, EditPlan } from './screen-actions'
 import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -14,15 +15,36 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const [body, setBody] = useState<ReactNode>()
 
-	const [footer, setFooter] = useState<ReactNode>()
+	const handleAboutPlan = (): void => {
+		setBody(<AboutPlan />)
+		setTitle('Sobre o plano contratado')
+		setShow(true)
+	}
 
-	const handleAboutPlan = (): void => {}
+	const handleEditPlan = (): void => {
+		setBody(<EditPlan />)
+		setTitle('Editar plano')
+		setShow(true)
+	}
 
-	const handleEditPlan = (): void => {}
+	const handleEditCreditCard = (): void => {
+		setBody(
+			<EditCreditCard
+				card_number="000000000000"
+				cvv="000"
+				name="Guilherme De C Boaventura"
+				validate="06/2026"
+			/>
+		)
+		setTitle('Editar cartão de crédito')
+		setShow(true)
+	}
 
-	const handleEditCreditCard = (): void => {}
-
-	const handleDeleteCreditCard = (): void => {}
+	const handleDeleteCreditCard = (): void => {
+		setBody(<DeleteCreditCard close={() => setShow(false)} id={1} />)
+		setTitle('Excluir cartão de crédito')
+		setShow(true)
+	}
 
 	const handleRegisterCreditCard = (): void => {}
 
@@ -51,14 +73,7 @@ export const PlanData: FC = (): JSX.Element => {
 				</div>
 			</section>
 
-			<Modal
-				size="lg"
-				body={body}
-				close={() => setShow(false)}
-				footer={footer}
-				show={show}
-				title={title}
-			/>
+			<Modal size="lg" body={body} close={() => setShow(false)} show={show} title={title} />
 		</>
 	)
 }
