@@ -1,7 +1,7 @@
 import { Formik, Form as FormikForm, FormikValues, FormikHelpers } from 'formik'
 import { Props } from './types'
 
-export function Form<Values>({ children, initialValues, onSubmit, ...props }: Props<Values>) {
+export function Form<Values>({ initialValues, onSubmit, children, ...props }: Props<Values>) {
 	return (
 		<Formik
 			//@ts-ignore
@@ -12,7 +12,11 @@ export function Form<Values>({ children, initialValues, onSubmit, ...props }: Pr
 			initialValues={initialValues as FormikValues}
 			{...props}
 		>
-			<FormikForm>{children}</FormikForm>
+			{({ ...rest }) => (
+				<FormikForm>
+					<>{children({ ...rest })}</>
+				</FormikForm>
+			)}
 		</Formik>
 	)
 }
