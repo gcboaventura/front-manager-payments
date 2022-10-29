@@ -13,7 +13,7 @@ import {
 	Plus,
 	TextInput
 } from '@/components'
-import style from './creditcard.module.css'
+import style from './index.module.css'
 
 export const CreditCardForm: FC<Props> = ({ initialValues, type }): JSX.Element => {
 	const fetchAddCreditCard = (values: FormValues): void => {}

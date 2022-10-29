@@ -1,6 +1,6 @@
 import { Text, Title } from '@/components'
 import { FC } from 'react'
-import style from './kpi.module.css'
+import style from './index.module.css'
 
 export const KPIs: FC = (): JSX.Element => {
 	return (

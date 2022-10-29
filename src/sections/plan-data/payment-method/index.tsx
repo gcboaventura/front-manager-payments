@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Alert, Button, CreditCardComponent, Pencil, Title, Trash } from '@/components'
 import { Props } from './types'
-import style from './currentcard.module.css'
+import style from './index.module.css'
 
 export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): JSX.Element => {
 	const haveCard: boolean = false

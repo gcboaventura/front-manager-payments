@@ -4,7 +4,7 @@ import { useField } from 'formik'
 import { Form } from 'react-bootstrap'
 import { Label } from '../label'
 import { ErrorMessage } from '../error-message'
-import style from './textinput.module.css'
+import style from './index.module.css'
 
 export const TextInput: FC<Props> = ({
 	width,

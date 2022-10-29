@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { File, Title } from '@/components'
 import { DateUtils } from '@/utils'
-import style from './invoices.module.css'
+import style from './index.module.css'
 
 export const Invoices: FC = (): JSX.Element => {
 	const dateHelper = new DateUtils()

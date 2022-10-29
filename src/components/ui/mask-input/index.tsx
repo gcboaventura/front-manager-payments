@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap'
 import { Label } from '../label'
 import { ErrorMessage } from '../error-message'
 import { IMaskInput } from 'react-imask'
-import style from './maskinput.module.css'
+import style from './index.module.css'
 
 export const MaskInput: FC<Props> = ({
 	width,

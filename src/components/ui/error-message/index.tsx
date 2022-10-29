@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Props } from './types'
-import style from './errormessage.module.css'
+import style from './index.module.css'
 
 export const ErrorMessage: FC<Props> = ({ children, error, ...props }): JSX.Element => {
 	return (

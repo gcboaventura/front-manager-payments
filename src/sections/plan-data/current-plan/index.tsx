@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { About, Caption, Pencil, Text, Title } from '@/components'
 import { MoneyUtils } from '@/utils'
 import { Props } from './types'
-import style from './currentplan.module.css'
+import style from './index.module.css'
 
 export const CurrentPlan: FC<Props> = ({ aboutPlan, editPlan }): JSX.Element => {
 	const moneyHelper = new MoneyUtils()

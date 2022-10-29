@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Modal as ModalReactBootstrap } from 'react-bootstrap'
 import { Title } from '../typography'
 import { Props } from './types'
-import style from './modal.module.css'
+import style from './index.module.css'
 
 export const Modal: FC<Props> = ({ title, body, footer, close, ...props }): JSX.Element => {
 	return (
