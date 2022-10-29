@@ -10,7 +10,8 @@ import {
 	LockClosed,
 	MaskInput,
 	Pencil,
-	Plus
+	Plus,
+	TextInput
 } from '@/components'
 import style from './creditcard.module.css'
 
@@ -32,15 +33,21 @@ export const CreditCardForm: FC<Props> = ({ initialValues, handleSubmit, type })
 		>
 			{() => (
 				<>
-					<MaskInput
-						label="Número do cartão"
-						name="card_number"
-						type="text"
-						mask="0000 0000 0000 0000"
-						placeholder="0000 0000 0000 0000"
-						required
-						icon={<CreditCardIcon />}
-					/>
+					<div className="mb-3">
+						<TextInput label="Nome impresso no cartão" type="email" name="name" required />
+					</div>
+
+					<div>
+						<MaskInput
+							label="Número do cartão"
+							name="card_number"
+							type="text"
+							mask="0000 0000 0000 0000"
+							placeholder="0000 0000 0000 0000"
+							required
+							icon={<CreditCardIcon />}
+						/>
+					</div>
 
 					<Row className="mt-3 align-items-center justify-content-between">
 						<div className="col-md-6">

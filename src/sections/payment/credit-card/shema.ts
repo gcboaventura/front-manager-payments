@@ -5,6 +5,7 @@ import { FormValues } from './types'
 const cardValidator = new CreditCardUtils()
 
 export const schemaCreditCard: Yup.SchemaOf<FormValues> = Yup.object().shape({
+	name: Yup.string().required('Obrigatório'),
 	card_number: Yup.string()
 		.required('Obrigatório')
 		.test('card_number', 'Cartão inválido', function (value: string | undefined): boolean {
