@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-export const PlanInformation: FC = (): JSX.Element => {
+export const Invoices: FC = (): JSX.Element => {
 	return (
 		<div>
 			<h1>Faturas</h1>
