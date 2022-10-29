@@ -3,7 +3,7 @@ import { Alert, Button, CreditCardComponent, Pencil, Title, Trash } from '@/comp
 import { Props } from './types'
 import style from './currentcard.module.css'
 
-export const CurrentCard: FC<Props> = ({ deleteCard, editCard, addPayment }): JSX.Element => {
+export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): JSX.Element => {
 	const haveCard: boolean = false
 
 	const havePayPal: boolean = false

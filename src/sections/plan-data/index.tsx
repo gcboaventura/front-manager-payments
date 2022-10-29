@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from 'react'
 import { CreditCardForm } from '../payment/credit-card'
 import { Row } from 'react-bootstrap'
-import { CurrentCard } from './current-card'
+import { PaymentMethod } from './payment-method'
 import { CurrentPlan } from './current-plan'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
@@ -74,7 +74,7 @@ export const PlanData: FC = (): JSX.Element => {
 							<CurrentPlan aboutPlan={handleAboutPlan} editPlan={handleEditPlan} />
 						</div>
 						<div className="col-md-6">
-							<CurrentCard
+							<PaymentMethod
 								addPayment={handleAddPayment}
 								deleteCard={handleDeleteCreditCard}
 								editCard={handleEditCreditCard}
