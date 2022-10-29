@@ -17,4 +17,25 @@ export class DateUtils implements DateModel {
 	getYear(): number {
 		return moment().year()
 	}
+	formatDateString(date: string | number): string {
+		moment('pt')
+		moment.updateLocale('pt', {
+			months: [
+				'Janeiro',
+				'Fevereiro',
+				'Março',
+				'Abril',
+				'Maio',
+				'Junho',
+				'Julho',
+				'Agosto',
+				'Setembro',
+				'Outubro',
+				'Novembro',
+				'Dezembro'
+			]
+		})
+
+		return moment(date).format('DD [de] MMMM [de] YYYY')
+	}
 }

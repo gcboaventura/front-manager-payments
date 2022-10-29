@@ -3,4 +3,5 @@ export interface DateModel {
 	format(date: number | string): string
 	getMonth(): number
 	getYear(): number
+	formatDateString(date: string | number): string
 }
