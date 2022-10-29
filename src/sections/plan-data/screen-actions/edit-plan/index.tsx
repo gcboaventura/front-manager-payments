@@ -3,6 +3,7 @@ import { Button, Form, Select, Text, Title } from '@/components'
 import { Option } from '@/components/ui/select/types'
 import { schema } from './schema'
 import { FormValues } from './types'
+import style from './index.module.css'
 
 export const EditPlan: FC = (): JSX.Element => {
 	const [selected, setSelected] = useState<number>(2)
@@ -25,6 +26,8 @@ export const EditPlan: FC = (): JSX.Element => {
 	const currentPlan: Option | undefined = listPlans.find((x: Option) => x.value === selected)
 
 	const fetchUpdatePlan = (value: number): void => {}
+
+	const fetchDeleteAccount = (): void => {}
 
 	return (
 		<>
@@ -65,6 +68,12 @@ export const EditPlan: FC = (): JSX.Element => {
 								/>
 							</div>
 							<div className="col-md-12 d-flex align-items-center justify-content-end">
+								<Button
+									className={style.button}
+									variant="outline-danger"
+									children="Excluir minha conta"
+									onClick={fetchDeleteAccount}
+								/>
 								<Button type="submit" children="Mudar plano" />
 							</div>
 						</>
