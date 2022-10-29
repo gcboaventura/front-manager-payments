@@ -34,7 +34,7 @@ export const Select: FC<Props> = ({
 					{...props}
 					onChange={(event: ChangeEvent<HTMLSelectElement>) => {
 						field.onChange(event)
-						onChangeVal && onChangeVal(event.target.value)
+						onChangeVal && onChangeVal(parseInt(event.target.value))
 					}}
 				>
 					{options.map((x: Option) => (
