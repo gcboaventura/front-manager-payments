@@ -1,4 +1,5 @@
 import { FC, ReactNode, useState } from 'react'
+import { CreditCardForm } from '../payment/credit-card'
 import { Row } from 'react-bootstrap'
 import { CurrentCard } from './current-card'
 import { CurrentPlan } from './current-plan'
@@ -6,7 +7,9 @@ import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Modal } from '@/components'
 import { NewPaymentOption } from '../payment/new-payment-option'
-import { AboutPlan, DeleteCreditCard, EditCreditCard, EditPlan } from './screen-actions'
+import { AboutPlan } from './about-plan'
+import { EditPlan } from './edit-plan'
+import { DeleteCreditCard } from './delete-credit-card'
 import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -30,11 +33,14 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const handleEditCreditCard = (): void => {
 		setBody(
-			<EditCreditCard
-				card_number="000000000000"
-				cvv="000"
-				name="Guilherme De C Boaventura"
-				validate="06/2026"
+			<CreditCardForm
+				initialValues={{
+					card_number: '0000000000000',
+					cvv: '000',
+					name: 'Teste',
+					validate: '06/2026'
+				}}
+				type="edit"
 			/>
 		)
 		setTitle('Editar cartão de crédito')
@@ -50,7 +56,7 @@ export const PlanData: FC = (): JSX.Element => {
 	const handleRegisterCreditCard = (): void => {}
 
 	const handleAddPayment = (): void => {
-		setBody(<NewPaymentOption type="register" handleSubmit={(values: any) => {}} />)
+		setBody(<NewPaymentOption type="register" />)
 		setTitle('Adicionar pagamento')
 		setShow(true)
 	}

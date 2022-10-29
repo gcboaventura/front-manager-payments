@@ -15,7 +15,11 @@ import {
 } from '@/components'
 import style from './creditcard.module.css'
 
-export const CreditCardForm: FC<Props> = ({ initialValues, handleSubmit, type }): JSX.Element => {
+export const CreditCardForm: FC<Props> = ({ initialValues, type }): JSX.Element => {
+	const fetchAddCreditCard = (values: FormValues): void => {}
+
+	const fetchEditCreditCard = (values: FormValues): void => {}
+
 	return (
 		<Form<FormValues>
 			initialValues={
@@ -28,7 +32,9 @@ export const CreditCardForm: FC<Props> = ({ initialValues, handleSubmit, type })
 							validate: ''
 					  }
 			}
-			onSubmit={(values: FormValues) => handleSubmit(values)}
+			onSubmit={(values: FormValues) =>
+				type === 'edit' ? fetchEditCreditCard(values) : fetchAddCreditCard(values)
+			}
 			validationSchema={schemaCreditCard}
 		>
 			{() => (

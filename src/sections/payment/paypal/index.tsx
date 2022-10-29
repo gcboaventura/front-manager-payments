@@ -1,13 +1,19 @@
 import { FC } from 'react'
 import { Button, Email, Form, Plus, TextInput } from '@/components'
 import { schemaPayPal } from './schema'
-import { FormValues } from './types'
+import { FormValues, Props } from './types'
 
-export const PayPal: FC = (): JSX.Element => {
+export const PayPal: FC<Props> = ({ type, initialValues }): JSX.Element => {
+	const fetchAddEmailPaypal = (values: FormValues): void => {}
+
+	const fetchEditEmailPayPal = (values: FormValues): void => {}
+
 	return (
 		<Form<FormValues>
-			onSubmit={(values: FormValues) => console.log(values)}
-			initialValues={{ paypal_email: '' }}
+			onSubmit={(values: FormValues) =>
+				type === 'edit' ? fetchEditEmailPayPal(values) : fetchAddEmailPaypal(values)
+			}
+			initialValues={initialValues ? initialValues : { paypal_email: '' }}
 			validationSchema={schemaPayPal}
 		>
 			{() => (

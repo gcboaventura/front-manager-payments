@@ -7,6 +7,5 @@ export interface FormValues {
 
 export interface Props {
 	initialValues?: FormValues
-	handleSubmit(values: FormValues): void
 	type: 'register' | 'edit'
 }
