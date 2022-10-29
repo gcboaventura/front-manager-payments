@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Row } from 'react-bootstrap'
 import { CurrentCard } from './current-card'
 import { CurrentPlan } from './current-plan'
+import { KPIs } from './kpis'
 import { PlanInformation } from './plan-information'
 import style from './plandata.module.css'
 
@@ -21,6 +22,9 @@ export const PlanData: FC = (): JSX.Element => {
 						<CurrentCard />
 					</div>
 				</Row>
+				<div className="col-md-12">
+					<KPIs />
+				</div>
 				<div className="col-md-12">
 					<PlanInformation />
 				</div>
