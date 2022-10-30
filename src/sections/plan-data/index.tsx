@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import { CreditCardForm } from '../payment/credit-card'
 import { Row } from 'react-bootstrap'
 import { PaymentMethod } from './payment-method'
@@ -11,8 +11,11 @@ import { AboutPlan } from './about-plan'
 import { EditPlan } from './edit-plan'
 import { DeleteCreditCard } from './delete-credit-card'
 import { PayPalForm } from '../payment/paypal'
-import style from './plandata.module.css'
 import { DeletePayPal } from './delete-paypal'
+import { useDispatch, useSelector } from 'react-redux'
+import { GetAccountActions } from '@/store/account/get/action'
+import { RootState } from '@/store/config-store'
+import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -21,6 +24,16 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const [body, setBody] = useState<ReactNode>()
 
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(GetAccountActions.fetchGetAccount({ id: 0 }))
+	}, [])
+
+	const { account } = useSelector((state: RootState) => ({
+		account: state.account.get
+	}))
+
 	const handleAboutPlan = (): void => {
 		setBody(<AboutPlan />)
 		setTitle('Sobre o plano contratado')
@@ -28,7 +41,7 @@ export const PlanData: FC = (): JSX.Element => {
 	}
 
 	const handleEditPlan = (): void => {
-		setBody(<EditPlan />)
+		setBody(<EditPlan onSuccess={() => setShow(false)} />)
 		setTitle('Editar plano')
 		setShow(true)
 	}
