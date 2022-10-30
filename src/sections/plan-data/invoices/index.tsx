@@ -13,8 +13,7 @@ export const Invoices: FC<Props> = ({ view }): JSX.Element => {
 		link: string
 	}
 
-	const customLink =
-		'https://images.pexels.com/photos/261679/pexels-photo-261679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+	const customLink = '/img/download.png'
 
 	const items: Item[] = [
 		{
@@ -71,7 +70,11 @@ export const Invoices: FC<Props> = ({ view }): JSX.Element => {
 					<div className="col-md-1 text-center">
 						<span className={style.wrapperLink}>
 							<File />
-							<a download={x.link} className={style.link}>
+							<a
+								download={`Fatura - ${dateHelper.formatDateString(x.date)}`}
+								href={x.link}
+								className={style.link}
+							>
 								Baixar
 							</a>
 						</span>
