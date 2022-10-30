@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import AddPaypalReducer from './add/reducer'
+import DeletePaypalReducer from './delete/reducer'
 
 export default combineReducers({
-	add: AddPaypalReducer
+	add: AddPaypalReducer,
+	delete: DeletePaypalReducer
 })
