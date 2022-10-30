@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { File, Title } from '@/components'
+import { Eye, File, Title } from '@/components'
 import { DateUtils } from '@/utils'
+import { Props } from './types'
 import style from './index.module.css'
 
-export const Invoices: FC = (): JSX.Element => {
+export const Invoices: FC<Props> = ({ view }): JSX.Element => {
 	const dateHelper = new DateUtils()
 
 	interface Item {
@@ -12,40 +13,43 @@ export const Invoices: FC = (): JSX.Element => {
 		link: string
 	}
 
+	const customLink =
+		'https://images.pexels.com/photos/261679/pexels-photo-261679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+
 	const items: Item[] = [
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Aberta'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		},
 		{
 			date: dateHelper.toIso('10/03/2022'),
-			link: 'sfhvjklsdf',
+			link: customLink,
 			status: 'Fechada'
 		}
 	]
@@ -64,12 +68,21 @@ export const Invoices: FC = (): JSX.Element => {
 					<div className="col-md-4 text-center">
 						<span className={style[x.status === 'Fechada' ? 'closed' : 'open']}>{x.status}</span>
 					</div>
-					<div className="col-md-2 text-center">
+					<div className="col-md-1 text-center">
 						<span className={style.wrapperLink}>
 							<File />
 							<a download={x.link} className={style.link}>
 								Baixar
 							</a>
+						</span>
+					</div>
+					<div
+						onClick={() => view(x.link, dateHelper.formatDateString(x.date))}
+						className="col-md-1 text-center"
+					>
+						<span className={style.wrapperLink}>
+							<Eye />
+							<span>Ver</span>
 						</span>
 					</div>
 				</div>
