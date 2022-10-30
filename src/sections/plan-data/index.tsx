@@ -15,8 +15,8 @@ import { DeletePayPal } from './delete-paypal'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
-import style from './plandata.module.css'
 import { GetAllPlansActions } from '@/store/plans/get/action'
+import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
