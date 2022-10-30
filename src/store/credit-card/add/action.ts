@@ -1,4 +1,4 @@
-import { HttpResponse, RequestCreditCard, ResponseCreditCard } from '@/models'
+import { HttpResponse, RequestAddCreditCard, ResponseAddCreditCard } from '@/models'
 import { createAction, ActionsUnion, Action } from '../../action-helpers'
 
 export enum AddCreditCardActionKeys {
@@ -8,10 +8,10 @@ export enum AddCreditCardActionKeys {
 }
 
 export const AddCreditCardActions = {
-	fetchAddCreditCard: (data: RequestCreditCard): fetchAddCreditCardAction =>
+	fetchAddCreditCard: (data: RequestAddCreditCard): fetchAddCreditCardAction =>
 		createAction(AddCreditCardActionKeys.FETCH_ADD_CREDIT_CARD_START, data),
 	fetchAddCreditCardSuccess: (
-		card: HttpResponse<ResponseCreditCard>
+		card: HttpResponse<ResponseAddCreditCard>
 	): fetchAddCreditCardSuccessAction =>
 		createAction(AddCreditCardActionKeys.FETCH_ADD_CREDIT_CARD_SUCCESS, card),
 	fetchAddCreditCardFalied: (error: Error): fetchAddCreditCardFaliedAction =>
@@ -22,12 +22,12 @@ export type AddCreditCardActionUnion = ActionsUnion<typeof AddCreditCardActions>
 
 export type fetchAddCreditCardAction = Action<
 	AddCreditCardActionKeys.FETCH_ADD_CREDIT_CARD_START,
-	RequestCreditCard
+	RequestAddCreditCard
 >
 
 export type fetchAddCreditCardSuccessAction = Action<
 	AddCreditCardActionKeys.FETCH_ADD_CREDIT_CARD_SUCCESS,
-	HttpResponse<ResponseCreditCard>
+	HttpResponse<ResponseAddCreditCard>
 >
 
 export type fetchAddCreditCardFaliedAction = Action<

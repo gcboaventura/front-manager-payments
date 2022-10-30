@@ -1,7 +1,7 @@
-import { ResponseCreditCard, HttpResponse } from '@/models'
+import { ResponseAddCreditCard, HttpResponse } from '@/models'
 
 export interface AddCreditCardState {
-	data: HttpResponse<ResponseCreditCard>
+	data: HttpResponse<ResponseAddCreditCard>
 	isLoading: boolean
 	error?: Error
 }

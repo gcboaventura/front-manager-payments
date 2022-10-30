@@ -1,12 +1,12 @@
-import { HttpResponse, RequestCreditCard, ResponseCreditCard } from '@/models'
+import { HttpResponse, RequestAddCreditCard, ResponseAddCreditCard } from '@/models'
 import { Http } from '../config/http'
 
 interface CreditCardApiModel {
-	add(card: RequestCreditCard): Promise<HttpResponse<ResponseCreditCard>>
+	add(card: RequestAddCreditCard): Promise<HttpResponse<ResponseAddCreditCard>>
 }
 
 export class CreditCardAPI implements CreditCardApiModel {
-	async add(card: RequestCreditCard): Promise<HttpResponse<ResponseCreditCard>> {
+	async add(card: RequestAddCreditCard): Promise<HttpResponse<ResponseAddCreditCard>> {
 		const url = '/add-credit-card'
 		return Http.post(url, card)
 	}
