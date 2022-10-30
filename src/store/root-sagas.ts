@@ -1,4 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects'
+import { GetAccountActionKeys } from './account/get/action'
+import { fetchGetAccount } from './account/get/sagas'
 import { AddCreditCardActionKeys } from './credit-card/add/action'
 import { fetchAddCreditCard } from './credit-card/add/sagas'
 import { DeleteCreditCardActionKeys } from './credit-card/delete/action'
@@ -19,6 +21,7 @@ export function* rootSaga() {
 		takeLatest(UpdateCreditCardActionKeys.FETCH_UPDATE_CREDIT_CARD_START, fetchUpdateCreditCard),
 		takeLatest(AddPaypalActionKeys.FETCH_ADD_PAYPAL_START, fetchAddPaypal),
 		takeLatest(DeletePaypalActionKeys.FETCH_DELETE_PAYPAL_START, fetchDeletePaypal),
-		takeLatest(UpdatePaypalActionKeys.FETCH_UPDATE_PAYPAL_START, fetchUpdatePaypal)
+		takeLatest(UpdatePaypalActionKeys.FETCH_UPDATE_PAYPAL_START, fetchUpdatePaypal),
+		takeLatest(GetAccountActionKeys.FETCH_GET_ACCOUNT_START, fetchGetAccount)
 	])
 }
