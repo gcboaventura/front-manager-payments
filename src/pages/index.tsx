@@ -11,7 +11,12 @@ const Main: FC = (): JSX.Element => {
 
 	return (
 		<>
-			<Alert show={alert.show} message={alert.message} variant={alert.variant} time={alert.time} />
+			<Alert
+				show={alert.show}
+				message={alert.message}
+				variant={alert.variant}
+				time={alert.time || 5000}
+			/>
 			<PlanData />
 			{/* <Payment /> */}
 		</>
