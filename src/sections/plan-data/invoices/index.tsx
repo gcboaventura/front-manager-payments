@@ -14,59 +14,39 @@ export const Invoices: FC = (): JSX.Element => {
 
 	const items: Item[] = [
 		{
-			date: dateHelper.toIso('01-10-2022'),
+			date: dateHelper.toIso('10/03/2022'),
 			link: 'sfhvjklsdf',
 			status: 'Fechada'
 		},
 		{
-			date: dateHelper.toIso('02-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('03-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('04-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('05-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('06-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('07-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('08-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('09-10-2022'),
-			link: 'sfhvjklsdf',
-			status: 'Fechada'
-		},
-		{
-			date: dateHelper.toIso('10-10-2022'),
+			date: dateHelper.toIso('10/03/2022'),
 			link: 'sfhvjklsdf',
 			status: 'Aberta'
 		},
 		{
-			date: dateHelper.toIso('11-10-2022'),
+			date: dateHelper.toIso('10/03/2022'),
 			link: 'sfhvjklsdf',
-			status: 'Aberta'
+			status: 'Fechada'
+		},
+		{
+			date: dateHelper.toIso('10/03/2022'),
+			link: 'sfhvjklsdf',
+			status: 'Fechada'
+		},
+		{
+			date: dateHelper.toIso('10/03/2022'),
+			link: 'sfhvjklsdf',
+			status: 'Fechada'
+		},
+		{
+			date: dateHelper.toIso('10/03/2022'),
+			link: 'sfhvjklsdf',
+			status: 'Fechada'
+		},
+		{
+			date: dateHelper.toIso('10/03/2022'),
+			link: 'sfhvjklsdf',
+			status: 'Fechada'
 		}
 	]
 

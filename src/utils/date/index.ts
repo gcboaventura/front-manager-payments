@@ -1,9 +1,10 @@
 import { DateModel } from './types'
 import moment from 'moment'
+import 'moment/locale/pt-br'
 
 export class DateUtils implements DateModel {
 	toIso(date: string | number): string {
-		return moment(date).toISOString()
+		return moment(new Date(date)).format()
 	}
 
 	format(date: string | number): string {
@@ -17,9 +18,8 @@ export class DateUtils implements DateModel {
 	getYear(): number {
 		return moment().year()
 	}
-	formatDateString(date: string | number): string {
-		moment('pt')
-		moment.updateLocale('pt', {
+	formatDateString(date: string): string {
+		moment.updateLocale('pt-br', {
 			months: [
 				'Janeiro',
 				'Fevereiro',
@@ -35,7 +35,6 @@ export class DateUtils implements DateModel {
 				'Dezembro'
 			]
 		})
-
 		return moment(date).format('DD [de] MMMM [de] YYYY')
 	}
 }
