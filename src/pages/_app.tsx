@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
+import { Provider } from 'react-redux'
+import { store } from '../store/config-store'
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'react-credit-cards/es/styles-compiled.css'
@@ -19,7 +21,9 @@ const App = ({ Component, pageProps }: AppProps) => {
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 
-			<Component {...pageProps} />
+			<Provider store={store}>
+				<Component {...pageProps} />
+			</Provider>
 		</>
 	)
 }
