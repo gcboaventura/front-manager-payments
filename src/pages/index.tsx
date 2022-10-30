@@ -1,9 +1,16 @@
 import { FC } from 'react'
-import { Payment, PlanData } from '@/sections'
+import { PlanData } from '@/sections'
+import { Alert } from '@/components/ui'
 
 const Main: FC = (): JSX.Element => {
 	return (
 		<>
+			<Alert
+				show={true}
+				message="sdfssfsdfsfsdfsdfsdfsfsfsfsdfsdfsfsfffffsfsfsfsfsfsfsf"
+				variant="success"
+				time={5000}
+			/>
 			<PlanData />
 			{/* <Payment /> */}
 		</>
