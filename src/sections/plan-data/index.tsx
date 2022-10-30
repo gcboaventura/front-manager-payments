@@ -35,10 +35,10 @@ export const PlanData: FC = (): JSX.Element => {
 		setBody(
 			<CreditCardForm
 				initialValues={{
-					card_number: '0000000000000',
-					cvv: '000',
-					name: 'Teste',
-					validate: '06/2026'
+					card_number: '4179581059547386',
+					cvv: '100',
+					name: 'Guilherme de Carvalho Boaventura',
+					validate: '10/2026'
 				}}
 				type="edit"
 			/>
@@ -53,13 +53,15 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
-	const handleRegisterCreditCard = (): void => {}
-
 	const handleAddPayment = (): void => {
 		setBody(<NewPaymentOption type="register" />)
 		setTitle('Adicionar pagamento')
 		setShow(true)
 	}
+
+	const handleEditPayPal = (): void => {}
+
+	const handleDeletePayPal = (): void => {}
 
 	return (
 		<>
@@ -78,6 +80,8 @@ export const PlanData: FC = (): JSX.Element => {
 								addPayment={handleAddPayment}
 								deleteCard={handleDeleteCreditCard}
 								editCard={handleEditCreditCard}
+								deletePayPal={handleDeletePayPal}
+								editPayPal={handleEditPayPal}
 							/>
 						</div>
 					</Row>

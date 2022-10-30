@@ -8,7 +8,7 @@ export const CurrentPlan: FC<Props> = ({ aboutPlan, editPlan }): JSX.Element => 
 	const moneyHelper = new MoneyUtils()
 
 	return (
-		<div className={`${style.wrapper} d-flex bg-white rounded-3 p-3 shadow-sm`}>
+		<div className={`${style.card} d-flex bg-white rounded-3 p-3 shadow-sm`}>
 			<div className="col-md-10">
 				<Title className="h5 text-secondary">Seu plano</Title>
 				<Caption className={`h3 ${style.price}`}>{moneyHelper.format(259.0)}</Caption>

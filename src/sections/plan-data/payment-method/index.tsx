@@ -1,17 +1,23 @@
 import { FC } from 'react'
-import { Alert, Button, CreditCardComponent, Pencil, Title, Trash } from '@/components'
+import { Alert, Button, CreditCardComponent, Paypal, Pencil, Title, Trash } from '@/components'
 import { Props } from './types'
 import style from './index.module.css'
 
-export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): JSX.Element => {
-	const haveCard: boolean = false
+export const PaymentMethod: FC<Props> = ({
+	deleteCard,
+	editCard,
+	addPayment,
+	editPayPal,
+	deletePayPal
+}): JSX.Element => {
+	const haveCard: boolean = true
 
 	const havePayPal: boolean = false
 
 	return (
 		<>
 			{!haveCard && !havePayPal && (
-				<div className="bg-white rounded-3 p-3 shadow-sm">
+				<div className={`${style.card} bg-white rounded-3 p-3 shadow-sm`}>
 					<div className="col-md-12 d-flex align-items-center justify-content-center">
 						<Alert className={style.alert} />
 						<Title className="h5 text-secondary">
@@ -25,7 +31,7 @@ export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): 
 			)}
 
 			{haveCard && !havePayPal && (
-				<div className="d-flex align-items-start justify-content-center">
+				<div className="col-md-12 d-flex align-items-start justify-content-center">
 					<div>
 						<CreditCardComponent
 							expiry={'10/2026'}
@@ -37,10 +43,10 @@ export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): 
 						/>
 					</div>
 					<div>
-						<div className="bg-white rounded-3 p-2 mb-2">
+						<div className={`${style.wrapperIcon} bg-white rounded-3 p-2 mb-2`}>
 							<Pencil className={style.svg} onClick={editCard} />
 						</div>
-						<div className="bg-white rounded-3 p-2 mb-2">
+						<div className={`${style.wrapperIcon} bg-white rounded-3 p-2 mb-2`}>
 							<Trash className={style.svg} onClick={deleteCard} />
 						</div>
 					</div>
@@ -48,15 +54,18 @@ export const PaymentMethod: FC<Props> = ({ deleteCard, editCard, addPayment }): 
 			)}
 
 			{havePayPal && !haveCard && (
-				<div className="bg-white rounded-3 p-3 shadow-sm">
-					<div className="col-md-12 d-flex align-items-center justify-content-center">
-						<Alert className={style.alert} />
-						<Title className="h5 text-secondary">
-							Você não possui meios de pagamento cadastrado.
-						</Title>
+				<div className={`${style.card} bg-white rounded-3 p-3 shadow-sm`}>
+					<div className="col-md-12 d-flex align-items-center justify-content-between">
+						<Title className="h5 text-secondary">Metódo de pagamento:</Title>
+						<div className="d-flex align-items-center justify-content-start">
+							<Trash className={style.option} onClick={editPayPal} />
+							<Pencil className={style.option} onClick={deletePayPal} />
+						</div>
 					</div>
-					<div className="d-flex col-md-12 align-items-center justify-content-center mt-2">
-						<Button children="Cadastrar agora" onClick={addPayment} />
+					<div className="col-md-12 d-flex align-items-center justify-content-start">
+						<Paypal className={style.paypal} />
+						<Title className="h6 text-secondary">guilherme.boaventura@involucro.com.br</Title>
+						<div></div>
 					</div>
 				</div>
 			)}
