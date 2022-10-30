@@ -4,8 +4,9 @@ import { Option } from '@/components/ui/select/types'
 import { schema } from './schema'
 import { FormValues, Props } from './types'
 import { useDispatch } from 'react-redux'
-import style from './index.module.css'
 import { DeleteAccountActions } from '@/store/account/delete/action'
+import { UpdatePlanActions } from '@/store/plans/update/action'
+import style from './index.module.css'
 
 export const EditPlan: FC<Props> = ({ onSuccess }): JSX.Element => {
 	const [selected, setSelected] = useState<number>(2)
@@ -29,7 +30,9 @@ export const EditPlan: FC<Props> = ({ onSuccess }): JSX.Element => {
 
 	const currentPlan: Option | undefined = listPlans.find((x: Option) => x.value === selected)
 
-	const fetchUpdatePlan = (value: number): void => {}
+	const fetchUpdatePlan = (value: number): void => {
+		dispatch(UpdatePlanActions.fetchUpdatePlan({ plan: value, id: 0, onSuccess }))
+	}
 
 	const fetchDeleteAccount = (): void => {
 		dispatch(DeleteAccountActions.fetchDeleteAccount({ id: 0, onSuccess }))
