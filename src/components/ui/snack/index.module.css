@@ -1,0 +1,10 @@
+.snack {
+	position: absolute;
+	width: 25vw;
+	height: 100vh;
+	top: 0;
+	right: 0;
+	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+}

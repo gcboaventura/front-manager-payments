@@ -12,8 +12,5 @@
 }
 
 .wrapper {
-	position: absolute;
-	top: 20px;
-	right: 10px;
-	width: fit-content;
+	width: 95%;
 }

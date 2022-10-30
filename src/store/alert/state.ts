@@ -8,5 +8,5 @@ export interface PropsAlert {
 }
 
 export interface AlertState {
-	data: PropsAlert
+	data: PropsAlert[]
 }
