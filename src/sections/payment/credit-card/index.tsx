@@ -18,15 +18,15 @@ import {
 } from '@/components'
 import style from './index.module.css'
 
-export const CreditCardForm: FC<Props> = ({ initialValues, type }): JSX.Element => {
+export const CreditCardForm: FC<Props> = ({ initialValues, type, onSuccess }): JSX.Element => {
 	const dispatch = useDispatch()
 
 	const fetchAddCreditCard = (values: FormValues): void => {
-		dispatch(AddCreditCardActions.fetchAddCreditCard({ ...values }))
+		dispatch(AddCreditCardActions.fetchAddCreditCard({ ...values, onSuccess }))
 	}
 
 	const fetchEditCreditCard = (values: FormValues): void => {
-		dispatch(UpdateCreditCardActions.fetchUpdateCreditCard({ id: 0, ...values }))
+		dispatch(UpdateCreditCardActions.fetchUpdateCreditCard({ id: 0, ...values, onSuccess }))
 	}
 
 	return (

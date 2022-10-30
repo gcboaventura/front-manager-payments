@@ -43,6 +43,7 @@ export const PlanData: FC = (): JSX.Element => {
 					validate: '10/2026'
 				}}
 				type="edit"
+				onSuccess={() => setShow(false)}
 			/>
 		)
 		setTitle('Editar cartão de crédito')
@@ -56,7 +57,7 @@ export const PlanData: FC = (): JSX.Element => {
 	}
 
 	const handleAddPayment = (): void => {
-		setBody(<NewPaymentOption type="register" />)
+		setBody(<NewPaymentOption type="register" onSuccess={() => setShow(false)} />)
 		setTitle('Adicionar pagamento')
 		setShow(true)
 	}
@@ -66,6 +67,7 @@ export const PlanData: FC = (): JSX.Element => {
 			<PayPalForm
 				initialValues={{ paypal_email: 'guilherme.boaventura@involucro.com.br' }}
 				type="edit"
+				onSuccess={() => setShow(false)}
 			/>
 		)
 		setTitle('Editar e-mail de pagamento')

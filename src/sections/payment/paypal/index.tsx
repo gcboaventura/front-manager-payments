@@ -6,15 +6,17 @@ import { useDispatch } from 'react-redux'
 import { AddPaypalActions } from '@/store/paypal/add/action'
 import { UpdatePaypalActions } from '@/store/paypal/update/action'
 
-export const PayPalForm: FC<Props> = ({ type, initialValues }): JSX.Element => {
+export const PayPalForm: FC<Props> = ({ type, initialValues, onSuccess }): JSX.Element => {
 	const dispatch = useDispatch()
 
 	const fetchAddEmailPaypal = (values: FormValues): void => {
-		dispatch(AddPaypalActions.fetchAddPaypal({ email: values.paypal_email }))
+		dispatch(AddPaypalActions.fetchAddPaypal({ email: values.paypal_email, onSuccess }))
 	}
 
 	const fetchEditEmailPayPal = (values: FormValues): void => {
-		dispatch(UpdatePaypalActions.fetchUpdatePaypal({ email: values.paypal_email, id: 0 }))
+		dispatch(
+			UpdatePaypalActions.fetchUpdatePaypal({ email: values.paypal_email, id: 0, onSuccess })
+		)
 	}
 
 	return (

@@ -5,4 +5,5 @@ export interface FormValues {
 export interface Props {
 	initialValues?: FormValues
 	type: 'register' | 'edit'
+	onSuccess(data?: any): void
 }
