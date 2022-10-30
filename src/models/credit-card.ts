@@ -6,3 +6,9 @@ export interface RequestAddCreditCard {
 }
 
 export interface ResponseAddCreditCard {}
+
+export interface RequestDeleteCreditCard {
+	id: number
+}
+
+export interface ResponseDeleteCreditCard {}
