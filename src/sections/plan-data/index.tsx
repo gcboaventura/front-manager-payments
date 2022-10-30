@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
 import style from './plandata.module.css'
+import { GetAllPlansActions } from '@/store/plans/get/action'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -28,10 +29,12 @@ export const PlanData: FC = (): JSX.Element => {
 
 	useEffect(() => {
 		dispatch(GetAccountActions.fetchGetAccount({ id: 0 }))
+		dispatch(GetAllPlansActions.fetchGetAllPlans({}))
 	}, [])
 
-	const { account } = useSelector((state: RootState) => ({
-		account: state.account.get
+	const { account, plans } = useSelector((state: RootState) => ({
+		account: state.account.get,
+		plans: state.plans.getAll
 	}))
 
 	const handleAboutPlan = (): void => {
