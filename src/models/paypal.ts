@@ -9,3 +9,7 @@ export interface RequestDeletePaypal {
 }
 
 export interface ResponseDeletePaypal {}
+
+export interface RequestUpdatePaypal extends RequestAddPaypal, RequestDeletePaypal {}
+
+export interface ResponseUpdatePaypal {}
