@@ -1,10 +1,16 @@
 import { FC } from 'react'
 import { Button, Title } from '@/components'
 import { Props } from './types'
+import { useDispatch } from 'react-redux'
+import { DeleteCreditCardActions } from '@/store/credit-card/delete/action'
 import style from './index.module.css'
 
 export const DeleteCreditCard: FC<Props> = ({ close, id }): JSX.Element => {
-	const fetchDeleteCreditCard = (): void => {}
+	const dispatch = useDispatch()
+
+	const fetchDeleteCreditCard = (): void => {
+		dispatch(DeleteCreditCardActions.fetchDeleteCreditCard({ id }))
+	}
 
 	return (
 		<div className="col-md-12 d-flex flex-column align-items-center justify-content-center">

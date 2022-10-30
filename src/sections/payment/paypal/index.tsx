@@ -2,11 +2,20 @@ import { FC } from 'react'
 import { Button, Email, Form, Pencil, Plus, TextInput } from '@/components'
 import { schemaPayPal } from './schema'
 import { FormValues, Props } from './types'
+import { useDispatch } from 'react-redux'
+import { AddPaypalActions } from '@/store/paypal/add/action'
+import { UpdatePaypalActions } from '@/store/paypal/update/action'
 
 export const PayPalForm: FC<Props> = ({ type, initialValues }): JSX.Element => {
-	const fetchAddEmailPaypal = (values: FormValues): void => {}
+	const dispatch = useDispatch()
 
-	const fetchEditEmailPayPal = (values: FormValues): void => {}
+	const fetchAddEmailPaypal = (values: FormValues): void => {
+		dispatch(AddPaypalActions.fetchAddPaypal({ email: values.paypal_email }))
+	}
+
+	const fetchEditEmailPayPal = (values: FormValues): void => {
+		dispatch(UpdatePaypalActions.fetchUpdatePaypal({ email: values.paypal_email, id: 0 }))
+	}
 
 	return (
 		<Form<FormValues>

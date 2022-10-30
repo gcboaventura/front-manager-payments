@@ -1,10 +1,16 @@
 import { FC } from 'react'
 import { Button, Title } from '@/components'
 import { Props } from './types'
+import { useDispatch } from 'react-redux'
 import style from './index.module.css'
+import { DeletePaypalActions } from '@/store/paypal/delete/action'
 
 export const DeletePayPal: FC<Props> = ({ close, id }): JSX.Element => {
-	const fetchDeletePayPal = (): void => {}
+	const dispatch = useDispatch()
+
+	const fetchDeletePayPal = (): void => {
+		dispatch(DeletePaypalActions.fetchDeletePaypal({ id }))
+	}
 
 	return (
 		<div className="col-md-12 d-flex flex-column align-items-center justify-content-center">

@@ -2,6 +2,9 @@ import { FC } from 'react'
 import { Row } from 'react-bootstrap'
 import { schemaCreditCard } from './shema'
 import { FormValues, Props } from './types'
+import { useDispatch } from 'react-redux'
+import { AddCreditCardActions } from '@/store/credit-card/add/action'
+import { UpdateCreditCardActions } from '@/store/credit-card/update/action'
 import {
 	Button,
 	Calendar,
@@ -16,9 +19,15 @@ import {
 import style from './index.module.css'
 
 export const CreditCardForm: FC<Props> = ({ initialValues, type }): JSX.Element => {
-	const fetchAddCreditCard = (values: FormValues): void => {}
+	const dispatch = useDispatch()
 
-	const fetchEditCreditCard = (values: FormValues): void => {}
+	const fetchAddCreditCard = (values: FormValues): void => {
+		dispatch(AddCreditCardActions.fetchAddCreditCard({ ...values }))
+	}
+
+	const fetchEditCreditCard = (values: FormValues): void => {
+		dispatch(UpdateCreditCardActions.fetchUpdateCreditCard({ id: 0, ...values }))
+	}
 
 	return (
 		<Form<FormValues>
