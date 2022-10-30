@@ -15,6 +15,8 @@ import { DeletePaypalActionKeys } from './paypal/delete/action'
 import { fetchDeletePaypal } from './paypal/delete/sagas'
 import { UpdatePaypalActionKeys } from './paypal/update/action'
 import { fetchUpdatePaypal } from './paypal/update/sagas'
+import { GetAllPlansActions } from './plans/get/action'
+import { fetchGetAllPlans } from './plans/get/sagas'
 
 export function* rootSaga() {
 	yield all([
@@ -25,6 +27,7 @@ export function* rootSaga() {
 		takeLatest(DeletePaypalActionKeys.FETCH_DELETE_PAYPAL_START, fetchDeletePaypal),
 		takeLatest(UpdatePaypalActionKeys.FETCH_UPDATE_PAYPAL_START, fetchUpdatePaypal),
 		takeLatest(GetAccountActionKeys.FETCH_GET_ACCOUNT_START, fetchGetAccount),
-		takeLatest(DeleteAccountActionKeys.FETCH_DELETE_ACCOUNT_START, fetchDeleteAccount)
+		takeLatest(DeleteAccountActionKeys.FETCH_DELETE_ACCOUNT_START, fetchDeleteAccount),
+		takeLatest(GetAllPlansActions.fetchGetAllPlans, fetchGetAllPlans)
 	])
 }
