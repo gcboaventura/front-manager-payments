@@ -13,7 +13,6 @@ const Main: FC = (): JSX.Element => {
 		<>
 			<Snack data={alert} />
 			<PlanData />
-			{/* <Payment /> */}
 		</>
 	)
 }
