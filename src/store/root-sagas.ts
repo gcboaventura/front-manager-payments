@@ -31,6 +31,6 @@ export function* rootSaga() {
 		takeLatest(GetAccountActionKeys.FETCH_GET_ACCOUNT_START, fetchGetAccount),
 		takeLatest(DeleteAccountActionKeys.FETCH_DELETE_ACCOUNT_START, fetchDeleteAccount),
 		takeLatest(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_START, fetchGetAllPlans),
-		takeLatest(GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_FALIED, fetchGetAllInvoices)
+		takeLatest(GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_START, fetchGetAllInvoices)
 	])
 }

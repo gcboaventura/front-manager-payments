@@ -17,6 +17,7 @@ import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
 import { GetAllPlansActions } from '@/store/plans/get/action'
 import style from './plandata.module.css'
+import { GetAllInvoicesActions } from '@/store/invoices/get/action'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -30,11 +31,13 @@ export const PlanData: FC = (): JSX.Element => {
 	useEffect(() => {
 		dispatch(GetAccountActions.fetchGetAccount({ id: 0 }))
 		dispatch(GetAllPlansActions.fetchGetAllPlans({}))
+		dispatch(GetAllInvoicesActions.fetchGetAllInvoices({}))
 	}, [])
 
-	const { account, plans } = useSelector((state: RootState) => ({
+	const { account, plans, invoices } = useSelector((state: RootState) => ({
 		account: state.account.get,
-		plans: state.plans.getAll
+		plans: state.plans.getAll,
+		invoices: state.invoices
 	}))
 
 	const handleAboutPlan = (): void => {
