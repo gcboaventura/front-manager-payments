@@ -10,9 +10,9 @@ export const PaymentMethod: FC<Props> = ({
 	editPayPal,
 	deletePayPal
 }): JSX.Element => {
-	const haveCard: boolean = true
+	const haveCard: boolean = false
 
-	const havePayPal: boolean = false
+	const havePayPal: boolean = true
 
 	return (
 		<>
@@ -58,8 +58,8 @@ export const PaymentMethod: FC<Props> = ({
 					<div className="col-md-12 d-flex align-items-center justify-content-between">
 						<Title className="h5 text-secondary">Metódo de pagamento:</Title>
 						<div className="d-flex align-items-center justify-content-start">
-							<Trash className={style.option} onClick={editPayPal} />
-							<Pencil className={style.option} onClick={deletePayPal} />
+							<Trash className={style.option} onClick={deletePayPal} />
+							<Pencil className={style.option} onClick={editPayPal} />
 						</div>
 					</div>
 					<div className="col-md-12 d-flex align-items-center justify-content-start">

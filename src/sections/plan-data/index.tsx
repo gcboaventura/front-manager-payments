@@ -10,6 +10,7 @@ import { NewPaymentOption } from '../payment/new-payment-option'
 import { AboutPlan } from './about-plan'
 import { EditPlan } from './edit-plan'
 import { DeleteCreditCard } from './delete-credit-card'
+import { PayPalForm } from '../payment/paypal'
 import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -59,7 +60,16 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
-	const handleEditPayPal = (): void => {}
+	const handleEditPayPal = (): void => {
+		setBody(
+			<PayPalForm
+				initialValues={{ paypal_email: 'guilherme.boaventura@involucro.com.br' }}
+				type="edit"
+			/>
+		)
+		setTitle('Editar e-mail de pagamento')
+		setShow(true)
+	}
 
 	const handleDeletePayPal = (): void => {}
 

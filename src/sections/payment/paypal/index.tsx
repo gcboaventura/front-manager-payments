@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { Button, Email, Form, Plus, TextInput } from '@/components'
+import { Button, Email, Form, Pencil, Plus, TextInput } from '@/components'
 import { schemaPayPal } from './schema'
 import { FormValues, Props } from './types'
 
-export const PayPal: FC<Props> = ({ type, initialValues }): JSX.Element => {
+export const PayPalForm: FC<Props> = ({ type, initialValues }): JSX.Element => {
 	const fetchAddEmailPaypal = (values: FormValues): void => {}
 
 	const fetchEditEmailPayPal = (values: FormValues): void => {}
@@ -29,7 +29,12 @@ export const PayPal: FC<Props> = ({ type, initialValues }): JSX.Element => {
 					/>
 
 					<div className="d-flex align-items-center justify-content-end mt-3">
-						<Button type="submit" variant="outline-primary" icon={<Plus />} children="Adicionar" />
+						<Button
+							type="submit"
+							variant="outline-primary"
+							icon={type === 'register' ? <Plus /> : <Pencil />}
+							children={type === 'register' ? 'Adicionar' : 'Editar'}
+						/>
 					</div>
 				</>
 			)}
