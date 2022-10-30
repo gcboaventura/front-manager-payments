@@ -12,6 +12,7 @@ import { EditPlan } from './edit-plan'
 import { DeleteCreditCard } from './delete-credit-card'
 import { PayPalForm } from '../payment/paypal'
 import style from './plandata.module.css'
+import { DeletePayPal } from './delete-paypal'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -71,7 +72,11 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
-	const handleDeletePayPal = (): void => {}
+	const handleDeletePayPal = (): void => {
+		setBody(<DeletePayPal close={() => setShow(false)} id={1} />)
+		setTitle('Excluir e-mail PayPal')
+		setShow(true)
+	}
 
 	return (
 		<>
