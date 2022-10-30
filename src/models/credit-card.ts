@@ -12,3 +12,7 @@ export interface RequestDeleteCreditCard {
 }
 
 export interface ResponseDeleteCreditCard {}
+
+export interface RequestUpdateCreditCard extends RequestAddCreditCard, RequestDeleteCreditCard {}
+
+export interface ResponseUpdateCreditCard {}
