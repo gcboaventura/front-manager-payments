@@ -5,7 +5,7 @@ import { PaymentMethod } from './payment-method'
 import { CurrentPlan } from './current-plan'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
-import { Modal } from '@/components'
+import { Loading, Modal } from '@/components'
 import { NewPaymentOption } from '../payment/new-payment-option'
 import { AboutPlan } from './about-plan'
 import { EditPlan } from './edit-plan'
@@ -16,8 +16,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
 import { GetAllPlansActions } from '@/store/plans/get/action'
-import style from './plandata.module.css'
 import { GetAllInvoicesActions } from '@/store/invoices/get/action'
+import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -34,10 +34,22 @@ export const PlanData: FC = (): JSX.Element => {
 		dispatch(GetAllInvoicesActions.fetchGetAllInvoices({}))
 	}, [])
 
-	const { account, plans, invoices } = useSelector((state: RootState) => ({
+	const { account, plans, invoices, isLoading } = useSelector((state: RootState) => ({
 		account: state.account.get,
 		plans: state.plans.getAll,
-		invoices: state.invoices
+		invoices: state.invoices,
+		isLoading:
+			state.account.delete.isLoading ||
+			state.account.get.isLoading ||
+			state.plans.getAll.isLoading ||
+			state.plans.update.isLoading ||
+			state.invoices.getAll.isLoading ||
+			state.creditCard.add.isLoading ||
+			state.creditCard.delete.isLoading ||
+			state.creditCard.update.isLoading ||
+			state.paypal.add.isLoading ||
+			state.paypal.delete.isLoading ||
+			state.paypal.update.isLoading
 	}))
 
 	const handleAboutPlan = (): void => {
@@ -149,6 +161,8 @@ export const PlanData: FC = (): JSX.Element => {
 			</section>
 
 			<Modal size="lg" body={body} close={() => setShow(false)} show={show} title={title} />
+
+			<Loading show={isLoading} />
 		</>
 	)
 }
