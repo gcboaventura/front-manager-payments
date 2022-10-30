@@ -5,3 +5,7 @@ export interface RequestGetAccount {
 }
 
 export interface ResponseGetAccount {}
+
+export interface RequestDeleteAccount extends RequestGetAccount {}
+
+export interface ResponseDeleteAccount {}
