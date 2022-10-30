@@ -4,11 +4,13 @@ import CreditCardReducer from './credit-card'
 import PaypalReducer from './paypal'
 import AccountReducer from './account'
 import PlansReducer from './plans'
+import InvoicesReducer from './invoices'
 
 export const rootReducer = combineReducers({
 	alert: AlertReducer,
 	creditCard: CreditCardReducer,
 	paypal: PaypalReducer,
 	account: AccountReducer,
-	plans: PlansReducer
+	plans: PlansReducer,
+	invoices: InvoicesReducer
 })

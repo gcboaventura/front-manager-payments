@@ -9,6 +9,8 @@ import { DeleteCreditCardActionKeys } from './credit-card/delete/action'
 import { fetchDeleteCreditCard } from './credit-card/delete/sagas'
 import { UpdateCreditCardActionKeys } from './credit-card/update/action'
 import { fetchUpdateCreditCard } from './credit-card/update/sagas'
+import { GetAllInvoicesActionKeys } from './invoices/get/action'
+import { fetchGetAllInvoices } from './invoices/get/sagas'
 import { AddPaypalActionKeys } from './paypal/add/action'
 import { fetchAddPaypal } from './paypal/add/sagas'
 import { DeletePaypalActionKeys } from './paypal/delete/action'
@@ -28,6 +30,7 @@ export function* rootSaga() {
 		takeLatest(UpdatePaypalActionKeys.FETCH_UPDATE_PAYPAL_START, fetchUpdatePaypal),
 		takeLatest(GetAccountActionKeys.FETCH_GET_ACCOUNT_START, fetchGetAccount),
 		takeLatest(DeleteAccountActionKeys.FETCH_DELETE_ACCOUNT_START, fetchDeleteAccount),
-		takeLatest(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_START, fetchGetAllPlans)
+		takeLatest(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_START, fetchGetAllPlans),
+		takeLatest(GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_FALIED, fetchGetAllInvoices)
 	])
 }
