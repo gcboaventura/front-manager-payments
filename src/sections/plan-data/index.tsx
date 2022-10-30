@@ -78,6 +78,24 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
+	const handleViewInvoice = (url: string, name: string): void => {
+		setBody(
+			<div
+				style={{
+					backgroundImage: `url(${url})`,
+					minWidth: '600px',
+					minHeight: '600px',
+					width: '100%',
+					height: '100%',
+					backgroundSize: 'cover',
+					backgroundRepeat: 'no-repeat'
+				}}
+			></div>
+		)
+		setTitle('Fatura ' + name)
+		setShow(true)
+	}
+
 	return (
 		<>
 			<section className={style.section}>
@@ -104,7 +122,7 @@ export const PlanData: FC = (): JSX.Element => {
 						<KPIs />
 					</div>
 					<div className="col-md-12">
-						<Invoices />
+						<Invoices view={(url: string, name: string) => handleViewInvoice(url, name)} />
 					</div>
 				</div>
 			</section>
