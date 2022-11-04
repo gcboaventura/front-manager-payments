@@ -11,7 +11,6 @@ import { AboutPlan } from './about-plan'
 import { EditPlan } from './edit-plan'
 import { DeleteCreditCard } from './delete-credit-card'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
 import { GetAllPlansActions } from '@/store/plans/get/action'
 import style from './plandata.module.css'
@@ -26,18 +25,12 @@ export const PlanData: FC = (): JSX.Element => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(GetAccountActions.fetchGetAccount({ id: 0 }))
 		dispatch(GetAllPlansActions.fetchGetAllPlans({}))
 	}, [])
 
-	const { account, plans, isLoading } = useSelector((state: RootState) => ({
-		account: state.account.get,
+	const { plans, isLoading } = useSelector((state: RootState) => ({
 		plans: state.plans.getAll,
-		isLoading:
-			state.account.delete.isLoading ||
-			state.account.get.isLoading ||
-			state.plans.getAll.isLoading ||
-			state.plans.update.isLoading
+		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
 
 	const handleAboutPlan = (): void => {

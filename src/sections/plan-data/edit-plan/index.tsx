@@ -4,7 +4,6 @@ import { Option } from '@/components/ui/select/types'
 import { schema } from './schema'
 import { FormValues, Props } from './types'
 import { useDispatch } from 'react-redux'
-import { DeleteAccountActions } from '@/store/account/delete/action'
 import { UpdatePlanActions } from '@/store/plans/update/action'
 import style from './index.module.css'
 
@@ -34,9 +33,7 @@ export const EditPlan: FC<Props> = ({ onSuccess }): JSX.Element => {
 		dispatch(UpdatePlanActions.fetchUpdatePlan({ plan: value, id: 0, onSuccess }))
 	}
 
-	const fetchDeleteAccount = (): void => {
-		dispatch(DeleteAccountActions.fetchDeleteAccount({ id: 0, onSuccess }))
-	}
+	const fetchDeleteAccount = (): void => {}
 
 	return (
 		<>
