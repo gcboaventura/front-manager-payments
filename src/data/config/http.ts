@@ -8,7 +8,7 @@ export const Http: Axios = axios
 
 const jsonType: string = 'application/json'
 
-Http.defaults.baseURL = process.env.REACT_APP_BASE_URL
+Http.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL
 
 Http.defaults.headers.common['Authorization'] = ''
 
