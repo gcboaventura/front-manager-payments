@@ -1,12 +1,11 @@
 import { FC, ReactNode, useState } from 'react'
 import { Row } from 'react-bootstrap'
-import { PaymentMethod } from './payment-method'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
-import style from './plandata.module.css'
+import style from './index.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -48,11 +47,7 @@ export const PlanData: FC = (): JSX.Element => {
 						<img className={style.logo} src="/img/logo-primage-white.png" />
 					</Row>
 
-					<Row className="align-items-center justify-content-between">
-						<div className="col-md-6">
-							<PaymentMethod cvc="" expiry="" name="" number="" />
-						</div>
-					</Row>
+					<Row className="align-items-center justify-content-between"></Row>
 					<div className="col-md-12">
 						<KPIs />
 					</div>
