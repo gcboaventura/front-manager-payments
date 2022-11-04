@@ -1,18 +1,11 @@
 import { FC, ReactNode, useState } from 'react'
-import { CreditCardForm } from '../payment/credit-card'
 import { Row } from 'react-bootstrap'
 import { PaymentMethod } from './payment-method'
-import { CurrentPlan } from './current-plan'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
-import { NewPaymentOption } from '../payment/new-payment-option'
-import { AboutPlan } from './about-plan'
-import { EditPlan } from './edit-plan'
-import { DeleteCreditCard } from './delete-credit-card'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
-import { GetAllPlansActions } from '@/store/plans/get/action'
 import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -28,47 +21,6 @@ export const PlanData: FC = (): JSX.Element => {
 		plans: state.plans.getAll,
 		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
-
-	const handleAboutPlan = (): void => {
-		setBody(<AboutPlan />)
-		setTitle('Sobre o plano contratado')
-		setShow(true)
-	}
-
-	const handleEditPlan = (): void => {
-		setBody(<EditPlan onSuccess={() => setShow(false)} />)
-		setTitle('Editar plano')
-		setShow(true)
-	}
-
-	const handleEditCreditCard = (): void => {
-		setBody(
-			<CreditCardForm
-				initialValues={{
-					card_number: '4179581059547386',
-					cvv: '100',
-					name: 'Guilherme de Carvalho Boaventura',
-					validate: '10/2026'
-				}}
-				type="edit"
-				onSuccess={() => setShow(false)}
-			/>
-		)
-		setTitle('Editar cartão de crédito')
-		setShow(true)
-	}
-
-	const handleDeleteCreditCard = (): void => {
-		setBody(<DeleteCreditCard close={() => setShow(false)} id={1} />)
-		setTitle('Excluir cartão de crédito')
-		setShow(true)
-	}
-
-	const handleAddPayment = (): void => {
-		setBody(<NewPaymentOption type="register" onSuccess={() => setShow(false)} />)
-		setTitle('Adicionar pagamento')
-		setShow(true)
-	}
 
 	const handleViewInvoice = (url: string, name: string): void => {
 		setBody(
@@ -98,14 +50,7 @@ export const PlanData: FC = (): JSX.Element => {
 
 					<Row className="align-items-center justify-content-between">
 						<div className="col-md-6">
-							<CurrentPlan aboutPlan={handleAboutPlan} editPlan={handleEditPlan} />
-						</div>
-						<div className="col-md-6">
-							<PaymentMethod
-								addPayment={handleAddPayment}
-								deleteCard={handleDeleteCreditCard}
-								editCard={handleEditCreditCard}
-							/>
+							<PaymentMethod cvc="" expiry="" name="" number="" />
 						</div>
 					</Row>
 					<div className="col-md-12">

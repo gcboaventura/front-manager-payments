@@ -1,5 +1,3 @@
-export interface Props {
-	editCard(): void
-	deleteCard(): void
-	addPayment(): void
-}
+import { Props as PropsCard } from '@/components/ui/credit-card/types'
+
+export interface Props extends PropsCard {}
