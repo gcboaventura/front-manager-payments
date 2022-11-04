@@ -6,7 +6,7 @@ import { schema } from './schema'
 import { FormValues } from './types'
 import style from './index.module.css'
 
-export const Signature: FC = (): JSX.Element => {
+export const FormSignature: FC = (): JSX.Element => {
 	return (
 		<>
 			<Form initialValues={{}} onSubmit={(values: FormValues) => {}} validationSchema={schema}>
@@ -64,7 +64,7 @@ export const Signature: FC = (): JSX.Element => {
 								</span>
 							</div>
 
-							<Button type="submit" variant="outline-primary" icon="" children="" />
+							<Button type="submit" variant="outline-primary" icon="" children="Assinar" />
 						</div>
 					</>
 				)}

@@ -1,0 +1,15 @@
+.svg {
+	width: 120px;
+	height: 120px;
+	color: orange;
+	margin: 15px 0;
+}
+
+.title {
+	color: gray;
+	margin: 15px 0;
+}
+
+.button {
+	margin: 15px 0;
+}

@@ -1,5 +1,5 @@
 import { User } from '@/models'
 
 export interface UserModel {
-	get(): User
+	get(): User | null
 }

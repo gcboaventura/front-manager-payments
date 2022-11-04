@@ -8,3 +8,7 @@
 	width: auto;
 	height: auto;
 }
+
+.payment {
+	min-height: 30vh;
+}

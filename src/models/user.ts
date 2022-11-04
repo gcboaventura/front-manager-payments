@@ -1,5 +1,5 @@
 export interface User {
 	id: number
-	id_gateway: string
+	id_gateway?: string
 	email: string
 }

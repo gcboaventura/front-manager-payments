@@ -1,11 +1,15 @@
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { KPIs } from './kpis'
 import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
+import { UserHelper } from '@/utils'
 import style from './index.module.css'
+import { User } from '@/models'
+import { NotUser } from './not-user'
+import { FormSignature } from './form-signature'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -14,12 +18,22 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const [body, setBody] = useState<ReactNode>()
 
+	const [user, setuser] = useState<User | null>(null)
+
 	const dispatch = useDispatch()
 
 	const { plans, isLoading } = useSelector((state: RootState) => ({
 		plans: state.plans.getAll,
 		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
+
+	const userLocal = new UserHelper().get()
+
+	if (user) {
+		setuser(userLocal)
+	}
+
+	useEffect(() => {}, [])
 
 	const handleViewInvoice = (url: string, name: string): void => {
 		setBody(
@@ -39,6 +53,11 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
+	const handleAddPlan = (): void => {
+		setBody(<FormSignature />)
+		setTitle('Assinar')
+		setShow(true)
+	}
 	return (
 		<>
 			<section className={style.section}>
@@ -47,13 +66,20 @@ export const PlanData: FC = (): JSX.Element => {
 						<img className={style.logo} src="/img/logo-primage-white.png" />
 					</Row>
 
-					<Row className="align-items-center justify-content-between"></Row>
-					<div className="col-md-12">
-						<KPIs />
+					<div className={`${style.payment} col-md-12 bg-white rounded-3 shadow-sm`}>
+						{!user && <NotUser addPlan={handleAddPlan} />}
 					</div>
-					<div className="col-md-12">
-						<Invoices view={(url: string, name: string) => handleViewInvoice(url, name)} />
-					</div>
+
+					{user && (
+						<>
+							<div className="col-md-12">
+								<KPIs />
+							</div>
+							<div className="col-md-12">
+								<Invoices view={(url: string, name: string) => handleViewInvoice(url, name)} />
+							</div>
+						</>
+					)}
 				</div>
 			</section>
 
