@@ -10,13 +10,10 @@ import { NewPaymentOption } from '../payment/new-payment-option'
 import { AboutPlan } from './about-plan'
 import { EditPlan } from './edit-plan'
 import { DeleteCreditCard } from './delete-credit-card'
-import { PayPalForm } from '../payment/paypal'
-import { DeletePayPal } from './delete-paypal'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetAccountActions } from '@/store/account/get/action'
 import { RootState } from '@/store/config-store'
 import { GetAllPlansActions } from '@/store/plans/get/action'
-import { GetAllInvoicesActions } from '@/store/invoices/get/action'
 import style from './plandata.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -31,25 +28,16 @@ export const PlanData: FC = (): JSX.Element => {
 	useEffect(() => {
 		dispatch(GetAccountActions.fetchGetAccount({ id: 0 }))
 		dispatch(GetAllPlansActions.fetchGetAllPlans({}))
-		dispatch(GetAllInvoicesActions.fetchGetAllInvoices({}))
 	}, [])
 
-	const { account, plans, invoices, isLoading } = useSelector((state: RootState) => ({
+	const { account, plans, isLoading } = useSelector((state: RootState) => ({
 		account: state.account.get,
 		plans: state.plans.getAll,
-		invoices: state.invoices,
 		isLoading:
 			state.account.delete.isLoading ||
 			state.account.get.isLoading ||
 			state.plans.getAll.isLoading ||
-			state.plans.update.isLoading ||
-			state.invoices.getAll.isLoading ||
-			state.creditCard.add.isLoading ||
-			state.creditCard.delete.isLoading ||
-			state.creditCard.update.isLoading ||
-			state.paypal.add.isLoading ||
-			state.paypal.delete.isLoading ||
-			state.paypal.update.isLoading
+			state.plans.update.isLoading
 	}))
 
 	const handleAboutPlan = (): void => {
@@ -93,24 +81,6 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
-	const handleEditPayPal = (): void => {
-		setBody(
-			<PayPalForm
-				initialValues={{ paypal_email: 'guilherme.boaventura@involucro.com.br' }}
-				type="edit"
-				onSuccess={() => setShow(false)}
-			/>
-		)
-		setTitle('Editar e-mail de pagamento')
-		setShow(true)
-	}
-
-	const handleDeletePayPal = (): void => {
-		setBody(<DeletePayPal close={() => setShow(false)} id={1} />)
-		setTitle('Excluir e-mail PayPal')
-		setShow(true)
-	}
-
 	const handleViewInvoice = (url: string, name: string): void => {
 		setBody(
 			<div
@@ -146,8 +116,6 @@ export const PlanData: FC = (): JSX.Element => {
 								addPayment={handleAddPayment}
 								deleteCard={handleDeleteCreditCard}
 								editCard={handleEditCreditCard}
-								deletePayPal={handleDeletePayPal}
-								editPayPal={handleEditPayPal}
 							/>
 						</div>
 					</Row>
