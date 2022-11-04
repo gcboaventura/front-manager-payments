@@ -8,14 +8,14 @@ import {
 } from '@/models'
 
 interface AccountApiModel {
-	getAll(data: RequestGetAllPlans): Promise<HttpResponse<ResponseGetAllPlans>>
+	getAll(config: RequestGetAllPlans): Promise<HttpResponse<ResponseGetAllPlans[]>>
 	update(data: RequestUpdatePlan): Promise<HttpResponse<ResponseUpdatePlan>>
 }
 
 export class PlanAPI implements AccountApiModel {
-	async getAll(data: RequestGetAllPlans): Promise<HttpResponse<ResponseGetAllPlans>> {
+	async getAll(config: RequestGetAllPlans): Promise<HttpResponse<ResponseGetAllPlans[]>> {
 		const url = '/list-plan'
-		return Http.get(url)
+		return await Http.get(url)
 	}
 
 	async update(data: RequestUpdatePlan): Promise<HttpResponse<ResponseUpdatePlan>> {

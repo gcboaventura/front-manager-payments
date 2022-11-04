@@ -4,7 +4,6 @@ import { Props } from './types'
 import style from './index.module.css'
 
 export const Loading: FC<Props> = ({ show }): JSX.Element => {
-	console.log(show)
 	return (
 		<>
 			{show && (

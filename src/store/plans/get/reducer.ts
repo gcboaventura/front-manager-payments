@@ -2,9 +2,7 @@ import { GetAllPlansState } from './state'
 import { GetAllPlansActionUnion, GetAllPlansActionKeys } from './action'
 
 const initialState: GetAllPlansState = {
-	data: {
-		body: {}
-	},
+	data: [],
 	isLoading: false
 }
 

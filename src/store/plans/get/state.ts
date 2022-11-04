@@ -1,7 +1,7 @@
-import { HttpResponse, ResponseGetAllPlans } from '@/models'
+import { ResponseGetAllPlans } from '@/models'
 
 export interface GetAllPlansState {
-	data: HttpResponse<ResponseGetAllPlans>
+	data: ResponseGetAllPlans[]
 	isLoading: boolean
 	error?: Error
 }

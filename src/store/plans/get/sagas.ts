@@ -11,7 +11,7 @@ export function* fetchGetAllPlans(action: fetchGetAllPlansAction) {
 	try {
 		const { data } = yield call(planAPI.getAll, action.payload)
 
-		yield put(GetAllPlansActions.fetchGetAllPlansSuccess(data))
+		yield put(GetAllPlansActions.fetchGetAllPlansSuccess(data.data))
 
 		if (onSuccess) {
 			onSuccess(data)

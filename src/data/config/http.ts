@@ -1,27 +1,14 @@
-import axios, { Axios, AxiosResponse } from 'axios'
+import axios, { Axios } from 'axios'
 
-export enum StatusCode {
-	Unauthorized = 401
+import { IncomingHttpHeaders } from 'http'
+
+const headers: IncomingHttpHeaders = {
+	'content-type': 'application/json'
 }
 
-export const Http: Axios = axios
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL
 
-const jsonType: string = 'application/json'
-
-Http.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL
-
-Http.defaults.headers.common['Authorization'] = ''
-
-Http.defaults.headers.post['Content-Type'] = jsonType
-
-Http.defaults.headers.get['Content-Type'] = jsonType
-
-Http.defaults.headers.delete['Content-Type'] = jsonType
-
-Http.defaults.headers.patch['Content-Type'] = jsonType
-
-Http.interceptors.response.use((response: AxiosResponse<any, any>): any => {
-	if (response.status === StatusCode.Unauthorized) {
-		window.location.href = '/'
-	}
+export const Http: Axios = axios.create({
+	headers,
+	baseURL
 })

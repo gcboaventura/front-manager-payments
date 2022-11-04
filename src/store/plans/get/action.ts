@@ -10,9 +10,7 @@ export enum GetAllPlansActionKeys {
 export const GetAllPlansActions = {
 	fetchGetAllPlans: (data: RequestGetAllPlans): fetchGetAllPlansAction =>
 		createAction(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_START, data),
-	fetchGetAllPlansSuccess: (
-		card: HttpResponse<ResponseGetAllPlans>
-	): fetchGetAllPlansSuccessAction =>
+	fetchGetAllPlansSuccess: (card: ResponseGetAllPlans[]): fetchGetAllPlansSuccessAction =>
 		createAction(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_SUCCESS, card),
 	fetchGetAllPlansFalied: (error: Error): fetchGetAllPlansFaliedAction =>
 		createAction(GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_FALIED, error)
@@ -27,7 +25,7 @@ export type fetchGetAllPlansAction = Action<
 
 export type fetchGetAllPlansSuccessAction = Action<
 	GetAllPlansActionKeys.FETCH_GET_ALL_PLANS_SUCCESS,
-	HttpResponse<ResponseGetAllPlans>
+	ResponseGetAllPlans[]
 >
 
 export type fetchGetAllPlansFaliedAction = Action<

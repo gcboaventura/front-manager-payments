@@ -33,6 +33,10 @@ export const PlanData: FC = (): JSX.Element => {
 		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
 
+	useEffect(() => {
+		console.log(plans.data.map((x) => console.log(x)))
+	}, [plans])
+
 	const handleAboutPlan = (): void => {
 		setBody(<AboutPlan />)
 		setTitle('Sobre o plano contratado')
