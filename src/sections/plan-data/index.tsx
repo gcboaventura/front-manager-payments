@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 import { CreditCardForm } from '../payment/credit-card'
 import { Row } from 'react-bootstrap'
 import { PaymentMethod } from './payment-method'
@@ -24,18 +24,10 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const dispatch = useDispatch()
 
-	useEffect(() => {
-		dispatch(GetAllPlansActions.fetchGetAllPlans({}))
-	}, [])
-
 	const { plans, isLoading } = useSelector((state: RootState) => ({
 		plans: state.plans.getAll,
 		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
-
-	useEffect(() => {
-		console.log(plans.data.map((x) => console.log(x)))
-	}, [plans])
 
 	const handleAboutPlan = (): void => {
 		setBody(<AboutPlan />)
