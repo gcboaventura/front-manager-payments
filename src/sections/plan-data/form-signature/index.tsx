@@ -1,5 +1,14 @@
 import { FC, useEffect, useState } from 'react'
-import { Calendar, LockClosed, MaskInput, TextInput, Form, Button, Select } from '@/components'
+import {
+	Calendar,
+	LockClosed,
+	MaskInput,
+	TextInput,
+	Form,
+	Button,
+	Select,
+	Refresh
+} from '@/components'
 import { CreditCard as CreditCardIcon } from '@/components/icons/credit-card'
 import { Row } from 'react-bootstrap'
 import { schema } from './schema'
@@ -45,6 +54,8 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 
 	const [mask, setMask] = useState<string>('')
 
+	const [refresh, setRefresh] = useState<number>(0)
+
 	const [labelDocument, setLabelDocument] = useState<string>('Nº do documento')
 
 	const [arrayPlans, setArrayPlans] = useState<Option[]>([])
@@ -57,7 +68,7 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 
 	useEffect(() => {
 		fetchGetPlans()
-	}, [])
+	}, [refresh])
 
 	const fetchGetCep = (value: string, setFieldValue: any): void => {
 		if (value.length === 9) {
@@ -327,8 +338,18 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 								<p>Plano</p>
 
 								<Row className="d-flex">
-									<div className="col-md-8">
-										<Select name="plan_id" label="Plano escolhido" required options={arrayPlans} />
+									<div className="d-flex align-items-center col-md-8">
+										<div className="col-md-11">
+											<Select
+												name="plan_id"
+												label="Plano escolhido"
+												required
+												options={arrayPlans}
+											/>
+										</div>
+										<div className="col-md-1">
+											<Refresh className={style.refresh} onClick={() => setRefresh(refresh + 1)} />
+										</div>
 									</div>
 
 									<div className="col-md-4">
