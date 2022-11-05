@@ -397,7 +397,7 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 											name="validate"
 											type="text"
 											mask="00/0000"
-											placeholder="00/0000"
+											placeholder="00/00"
 											required
 											icon={<Calendar />}
 										/>

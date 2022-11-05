@@ -18,6 +18,7 @@ export class DateUtils implements DateModel {
 	getYear(): number {
 		return moment().year()
 	}
+
 	formatDateString(date: string): string {
 		moment.updateLocale('pt-br', {
 			months: [
@@ -39,10 +40,10 @@ export class DateUtils implements DateModel {
 	}
 
 	currentDate(): string {
-		return moment().format('DD/MM/YYYY')
+		return moment().format()
 	}
 
 	toApi(value: string): string {
-		return moment(value).format('YYYY-MM-DD')
+		return moment().format('YYYY-MM-DD')
 	}
 }
