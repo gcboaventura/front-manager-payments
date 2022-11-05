@@ -37,4 +37,8 @@ export class DateUtils implements DateModel {
 		})
 		return moment(date).format('DD [de] MMMM [de] YYYY')
 	}
+
+	currentDate(): string {
+		return moment().format('DD/MM/YYYY')
+	}
 }

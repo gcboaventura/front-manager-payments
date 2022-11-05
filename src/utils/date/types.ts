@@ -4,4 +4,5 @@ export interface DateModel {
 	getMonth(): number
 	getYear(): number
 	formatDateString(date: string | number): string
+	currentDate(): string
 }
