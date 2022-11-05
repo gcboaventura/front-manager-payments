@@ -22,3 +22,7 @@ export interface FormValues {
 	validate: string
 	cvv: string
 }
+
+export interface Props {
+	onSuccess?: (data?: any) => void
+}

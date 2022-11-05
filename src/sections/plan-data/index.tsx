@@ -5,10 +5,10 @@ import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
-import style from './index.module.css'
 import { User } from '@/models'
 import { NotUser } from './not-user'
 import { FormSignature } from './form-signature'
+import style from './index.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -21,12 +21,10 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const dispatch = useDispatch()
 
-	const { plans, isLoading } = useSelector((state: RootState) => ({
-		plans: state.plans.getAll,
-		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
+	const { isLoading } = useSelector((state: RootState) => ({
+		isLoading:
+			state.plans.getAll.isLoading || state.plans.update.isLoading || state.signatue.add.isLoading
 	}))
-
-	useEffect(() => {}, [])
 
 	const handleViewInvoice = (url: string, name: string): void => {
 		setBody(
@@ -47,7 +45,7 @@ export const PlanData: FC = (): JSX.Element => {
 	}
 
 	const handleAddPlan = (): void => {
-		setBody(<FormSignature />)
+		setBody(<FormSignature onSuccess={() => setShow(false)} />)
 		setTitle('Assinar')
 		setShow(true)
 	}
