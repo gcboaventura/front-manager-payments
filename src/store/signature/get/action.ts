@@ -1,36 +1,36 @@
 import { HttpResponse, RequestGetSignature, ResponseGetSignature } from '@/models'
 import { createAction, ActionsUnion, Action } from '../../action-helpers'
 
-export enum GetSignaturesActionKeys {
-	FETCH_GET_ALL_INVOICES_START = '[LOGIN] FETCH_GET_ALL_INVOICES_START',
-	FETCH_GET_ALL_INVOICES_SUCCESS = '[LOGIN] FETCH_GET_ALL_INVOICES_SUCCESS',
-	FETCH_GET_ALL_INVOICES_FALIED = '[LOGIN] FETCH_GET_ALL_INVOICES_FALIED'
+export enum GetSignatureActionKeys {
+	FETCH_GET_SIGNATURE_START = '[LOGIN] FETCH_GET_SIGNATURE_START',
+	FETCH_GET_SIGNATURE_SUCCESS = '[LOGIN] FETCH_GET_SIGNATURE_SUCCESS',
+	FETCH_GET_SIGNATURE_FALIED = '[LOGIN] FETCH_GET_SIGNATURE_FALIED'
 }
 
-export const GetSignaturesActions = {
-	fetchGetSignatures: (data: RequestGetSignature): fetchGetSignaturesAction =>
-		createAction(GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_START, data),
-	fetchGetSignaturesSuccess: (
+export const GetSignatureActions = {
+	fetchGetSignature: (data: RequestGetSignature): fetchGetSignatureAction =>
+		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_START, data),
+	fetchGetSignatureSuccess: (
 		card: HttpResponse<ResponseGetSignature>
-	): fetchGetSignaturesSuccessAction =>
-		createAction(GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_SUCCESS, card),
-	fetchGetSignaturesFalied: (error: Error): fetchGetSignaturesFaliedAction =>
-		createAction(GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_FALIED, error)
+	): fetchGetSignatureSuccessAction =>
+		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS, card),
+	fetchGetSignatureFalied: (error: Error): fetchGetSignatureFaliedAction =>
+		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_FALIED, error)
 }
 
-export type GetSignaturesActionUnion = ActionsUnion<typeof GetSignaturesActions>
+export type GetSignatureActionUnion = ActionsUnion<typeof GetSignatureActions>
 
-export type fetchGetSignaturesAction = Action<
-	GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_START,
+export type fetchGetSignatureAction = Action<
+	GetSignatureActionKeys.FETCH_GET_SIGNATURE_START,
 	RequestGetSignature
 >
 
-export type fetchGetSignaturesSuccessAction = Action<
-	GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_SUCCESS,
+export type fetchGetSignatureSuccessAction = Action<
+	GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS,
 	HttpResponse<ResponseGetSignature>
 >
 
-export type fetchGetSignaturesFaliedAction = Action<
-	GetSignaturesActionKeys.FETCH_GET_ALL_INVOICES_FALIED,
+export type fetchGetSignatureFaliedAction = Action<
+	GetSignatureActionKeys.FETCH_GET_SIGNATURE_FALIED,
 	Error
 >

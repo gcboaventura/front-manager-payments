@@ -1,7 +1,7 @@
-import { HttpResponse, ResponseGetAllInvoices } from '@/models'
+import { HttpResponse, ResponseGetSignature } from '@/models'
 
-export interface GetAllInvoicesState {
-	data: HttpResponse<ResponseGetAllInvoices>
+export interface GetSignatureState {
+	data: HttpResponse<ResponseGetSignature>
 	isLoading: boolean
 	error?: Error
 }

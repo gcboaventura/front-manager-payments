@@ -1,30 +1,30 @@
-import { GetAllInvoicesState } from './state'
-import { GetAllInvoicesActionUnion, GetAllInvoicesActionKeys } from './action'
+import { GetSignatureState } from './state'
+import { GetSignatureActionUnion, GetSignatureActionKeys } from './action'
 
-const initialState: GetAllInvoicesState = {
+const initialState: GetSignatureState = {
 	data: {
 		body: {}
 	},
 	isLoading: false
 }
 
-const GetAllInvoicesReducer = (
+const GetSignatureReducer = (
 	state = initialState,
-	action: GetAllInvoicesActionUnion
-): GetAllInvoicesState => {
+	action: GetSignatureActionUnion
+): GetSignatureState => {
 	switch (action.type) {
-		case GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_START:
+		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_START:
 			return {
 				...state,
 				isLoading: true
 			}
-		case GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_SUCCESS:
+		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS:
 			return {
 				...state,
 				data: action.payload,
 				isLoading: false
 			}
-		case GetAllInvoicesActionKeys.FETCH_GET_ALL_INVOICES_FALIED:
+		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_FALIED:
 			return {
 				...state,
 				error: action.payload,
@@ -35,4 +35,4 @@ const GetAllInvoicesReducer = (
 	}
 }
 
-export default GetAllInvoicesReducer
+export default GetSignatureReducer
