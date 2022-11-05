@@ -1,4 +1,4 @@
-import { HttpResponse, RequestGetSignature, ResponseGetSignature } from '@/models'
+import { RequestGetSignature, ResponseGetSignature } from '@/models'
 import { createAction, ActionsUnion, Action } from '../../action-helpers'
 
 export enum GetSignatureActionKeys {
@@ -10,9 +10,7 @@ export enum GetSignatureActionKeys {
 export const GetSignatureActions = {
 	fetchGetSignature: (data: RequestGetSignature): fetchGetSignatureAction =>
 		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_START, data),
-	fetchGetSignatureSuccess: (
-		card: HttpResponse<ResponseGetSignature>
-	): fetchGetSignatureSuccessAction =>
+	fetchGetSignatureSuccess: (card: ResponseGetSignature): fetchGetSignatureSuccessAction =>
 		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS, card),
 	fetchGetSignatureFalied: (error: Error): fetchGetSignatureFaliedAction =>
 		createAction(GetSignatureActionKeys.FETCH_GET_SIGNATURE_FALIED, error)
@@ -27,7 +25,7 @@ export type fetchGetSignatureAction = Action<
 
 export type fetchGetSignatureSuccessAction = Action<
 	GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS,
-	HttpResponse<ResponseGetSignature>
+	ResponseGetSignature
 >
 
 export type fetchGetSignatureFaliedAction = Action<

@@ -1,10 +1,12 @@
+import { BillingType, Currency, Interval, Items, PlanModel, Status } from './plan'
+
 export interface RequestGetSignature {
 	id: string
 	onSuccess?: (data?: any) => void
 	onFalied?: (error?: any) => void
 }
 
-export interface ResponseGetSignature {}
+export interface ResponseGetSignature extends SignatureModel {}
 
 export interface RequestAddSignature {
 	data: {
@@ -97,4 +99,41 @@ export interface Card {
 	label?: string
 	billing_address_id?: string
 	billing_address: Address
+	last_four_digits?: string
+}
+
+export interface SignatureEntity {
+	code?: string
+	plan_id: string
+	payment_method: PaymentMethods
+	start_at: string
+	customer: ClientEntity
+	card: Card
+	installments?: number
+	discounts?: Discounts[]
+	increments?: Increments[]
+	gateway_affiliation_id?: string
+	boleto_due_days?: number
+}
+
+export interface SignatureModel extends SignatureEntity {
+	id: string
+	current_cycle: CurrentCycle
+	next_billing_at: string
+	currency: Currency
+	statement_descriptor: string
+	status: Status
+	created_at: string
+	updated_at: string
+	plan: PlanModel
+	items: Items
+	billing_type: BillingType
+	interval: Interval
+}
+
+export interface CurrentCycle {
+	id: string
+	start_at: string
+	end_at: string
+	billing_at: string
 }

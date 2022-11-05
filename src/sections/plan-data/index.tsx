@@ -5,10 +5,11 @@ import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
-import { User } from '@/models'
 import { NotUser } from './not-user'
 import { FormSignature } from './form-signature'
+import { GetSignatureActions } from '@/store/signature/get/action'
 import style from './index.module.css'
+import { InfoSignature } from './info-signature'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -17,13 +18,17 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const [body, setBody] = useState<ReactNode>()
 
-	const [user, setuser] = useState<User | null>(null)
+	const [user, setuser] = useState<string | null>(null)
 
 	const dispatch = useDispatch()
 
-	const { isLoading } = useSelector((state: RootState) => ({
+	const { isLoading, signature } = useSelector((state: RootState) => ({
 		isLoading:
-			state.plans.getAll.isLoading || state.plans.update.isLoading || state.signatue.add.isLoading
+			state.plans.getAll.isLoading ||
+			state.plans.update.isLoading ||
+			state.signatue.add.isLoading ||
+			state.signatue.get.isLoading,
+		signature: state.signatue.get.data
 	}))
 
 	const handleViewInvoice = (url: string, name: string): void => {
@@ -50,6 +55,15 @@ export const PlanData: FC = (): JSX.Element => {
 		setShow(true)
 	}
 
+	useEffect(() => {
+		const userId = localStorage.getItem('id')
+
+		if (userId) {
+			setuser(userId)
+			dispatch(GetSignatureActions.fetchGetSignature({ id: JSON.parse(userId) }))
+		}
+	}, [])
+
 	return (
 		<>
 			<section className={style.section}>
@@ -58,8 +72,9 @@ export const PlanData: FC = (): JSX.Element => {
 						<img className={style.logo} src="/img/logo-primage-white.png" />
 					</Row>
 
-					<div className={`${style.payment} col-md-12 bg-white rounded-3 shadow-sm`}>
+					<div>
 						{!user && <NotUser addPlan={handleAddPlan} />}
+						{user && <InfoSignature />}
 					</div>
 
 					{user && (

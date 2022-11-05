@@ -18,7 +18,7 @@ export interface PlanEntity {
 	description: string
 	shippable?: boolean
 	payment_methods: PaymentMethods[]
-	start_at: Date
+	start_at: string
 	installments: number[]
 	minimum_price?: number
 	statement_descriptor?: string

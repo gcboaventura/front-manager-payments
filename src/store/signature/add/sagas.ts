@@ -1,6 +1,7 @@
 import { SignatureAPI } from '@/data'
 import { AlertActions } from '@/store/alert/action'
 import { call, put } from 'redux-saga/effects'
+import { GetSignatureActions } from '../get/action'
 import { fetchAddSignatureAction, AddSignatureActions } from './action'
 
 export function* fetchAddSignature(action: fetchAddSignatureAction) {
@@ -14,6 +15,8 @@ export function* fetchAddSignature(action: fetchAddSignatureAction) {
 		yield put(AddSignatureActions.fetchAddSignatureSuccess(data))
 
 		localStorage.setItem('id', JSON.stringify(data.id))
+
+		yield put(GetSignatureActions.fetchGetSignature({ id: data.id }))
 
 		yield put(
 			AlertActions.ShowAlert({

@@ -1,7 +1,7 @@
-import { HttpResponse, ResponseGetSignature } from '@/models'
+import { ResponseGetSignature } from '@/models'
 
 export interface GetSignatureState {
-	data: HttpResponse<ResponseGetSignature>
+	data: ResponseGetSignature
 	isLoading: boolean
 	error?: Error
 }
