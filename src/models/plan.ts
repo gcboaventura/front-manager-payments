@@ -2,7 +2,7 @@ export interface RequestGetAllPlans {
 	onSuccess?: (data?: any) => void
 	onFalied?: (error?: any) => void
 }
-export interface ResponseGetAllPlans {}
+export interface ResponseGetAllPlans extends PlanModel {}
 
 export interface RequestUpdatePlan {
 	plan: number
