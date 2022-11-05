@@ -90,47 +90,49 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 	const fetchAddSignature = (values: FormValues): void => {
 		dispatch(
 			AddSignatureActions.fetchAddSignature({
-				plan_id: values.plan_id,
-				payment_method: 'credit_card',
-				start_at: dateHelper.toApi(values.start_at),
-				customer: {
-					name: values.name,
-					type: values.type as TypePesron,
-					email: values.email,
-					document: values.document.replaceAll('.', '').replaceAll('-', ''),
-					document_type: values.document_type as DocumentType,
-					gender: values.gender as Gender,
-					phones: {
-						mobile_phone: {
-							country_code: '55',
-							area_code: values.mobile_phone.substring(1, 3),
-							number: values.mobile_phone.substring(4, 16).replaceAll(' ', '').replace('-', '')
+				data: {
+					plan_id: values.plan_id,
+					payment_method: 'credit_card',
+					start_at: dateHelper.toApi(values.start_at),
+					customer: {
+						name: values.name,
+						type: values.type as TypePesron,
+						email: values.email,
+						document: values.document.replaceAll('.', '').replaceAll('-', ''),
+						document_type: values.document_type as DocumentType,
+						gender: values.gender as Gender,
+						phones: {
+							mobile_phone: {
+								country_code: '55',
+								area_code: values.mobile_phone.substring(1, 3),
+								number: values.mobile_phone.substring(4, 16).replaceAll(' ', '').replace('-', '')
+							}
+						},
+						birthdate: dateHelper.toApi(values.birthdate),
+						address: {
+							zip_code: values.zip_code.replace('-', ''),
+							city: values.city,
+							country: 'BR',
+							state: `BR-${values.state}`,
+							line_1: `${values.number}, ${values.road}, ${values.district}`,
+							line_2: values.complement || ''
 						}
 					},
-					birthdate: dateHelper.toApi(values.birthdate),
-					address: {
-						zip_code: values.zip_code.replace('-', ''),
-						city: values.city,
-						country: 'BR',
-						state: `BR-${values.state}`,
-						line_1: `${values.number}, ${values.road}, ${values.district}`,
-						line_2: values.complement || ''
+					card: {
+						billing_address: {
+							zip_code: values.zip_code.replace('-', ''),
+							city: values.city,
+							country: 'BR',
+							state: `BR-${values.state}`,
+							line_1: `${values.number}, ${values.road}, ${values.district}`,
+							line_2: values.complement || ''
+						},
+						cvv: values.cvv,
+						holder_name: values.holder_name,
+						number: values.card_number.replaceAll(' ', ''),
+						exp_month: parseInt(values.validate.split('/')[0]),
+						exp_year: parseInt(values.validate.split('/')[1])
 					}
-				},
-				card: {
-					billing_address: {
-						zip_code: values.zip_code.replace('-', ''),
-						city: values.city,
-						country: 'BR',
-						state: `BR-${values.state}`,
-						line_1: `${values.number}, ${values.road}, ${values.district}`,
-						line_2: values.complement || ''
-					},
-					cvv: values.cvv,
-					holder_name: values.holder_name,
-					number: values.card_number.replaceAll(' ', ''),
-					exp_month: parseInt(values.validate.split('/')[0]),
-					exp_year: parseInt(values.validate.split('/')[1])
 				},
 				onSuccess: (data: any) => onSuccess && onSuccess(data)
 			})

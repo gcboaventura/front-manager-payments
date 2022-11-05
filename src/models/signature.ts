@@ -5,17 +5,19 @@ export interface RequestGetSignature {
 export interface ResponseGetSignature {}
 
 export interface RequestAddSignature {
-	code?: string
-	plan_id: string
-	payment_method: PaymentMethods
-	start_at: string
-	customer: ClientEntity
-	card: Card
-	installments?: number
-	discounts?: Discounts[]
-	increments?: Increments[]
-	gateway_affiliation_id?: string
-	boleto_due_days?: number
+	data: {
+		code?: string
+		plan_id: string
+		payment_method: PaymentMethods
+		start_at: string
+		customer: ClientEntity
+		card: Card
+		installments?: number
+		discounts?: Discounts[]
+		increments?: Increments[]
+		gateway_affiliation_id?: string
+		boleto_due_days?: number
+	}
 
 	onSuccess?: (data?: any) => void
 	onFalied?: (error?: any) => void

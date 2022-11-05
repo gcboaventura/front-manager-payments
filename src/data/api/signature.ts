@@ -8,6 +8,6 @@ interface SignatureApiModel {
 export class SignatureAPI implements SignatureApiModel {
 	async add(data: RequestAddSignature): Promise<HttpResponse<ResponseAddSignature>> {
 		const url = `/add-signature`
-		return await Http.post(url, data)
+		return await Http.post(url, data.data)
 	}
 }
