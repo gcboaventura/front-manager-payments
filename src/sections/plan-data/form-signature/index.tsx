@@ -101,6 +101,14 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 						document: values.document.replaceAll('.', '').replaceAll('-', ''),
 						document_type: values.document_type as DocumentType,
 						gender: values.gender as Gender,
+						address: {
+							country: 'BR',
+							state: `BR-${values.state}`,
+							city: values.city,
+							zip_code: values.zip_code.replace('-', ''),
+							line_1: `${values.number}, ${values.road}, ${values.district}`,
+							line_2: values.complement || ''
+						},
 						phones: {
 							mobile_phone: {
 								country_code: '55',
@@ -108,30 +116,22 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 								number: values.mobile_phone.substring(4, 16).replaceAll(' ', '').replace('-', '')
 							}
 						},
-						birthdate: dateHelper.toApi(values.birthdate),
-						address: {
-							zip_code: values.zip_code.replace('-', ''),
-							city: values.city,
-							country: 'BR',
-							state: `BR-${values.state}`,
-							line_1: `${values.number}, ${values.road}, ${values.district}`,
-							line_2: values.complement || ''
-						}
+						birthdate: dateHelper.toApi(values.birthdate)
 					},
 					card: {
 						billing_address: {
-							zip_code: values.zip_code.replace('-', ''),
-							city: values.city,
 							country: 'BR',
 							state: `BR-${values.state}`,
+							city: values.city,
+							zip_code: values.zip_code.replace('-', ''),
 							line_1: `${values.number}, ${values.road}, ${values.district}`,
 							line_2: values.complement || ''
 						},
-						cvv: values.cvv,
 						holder_name: values.holder_name,
 						number: values.card_number.replaceAll(' ', ''),
 						exp_month: parseInt(values.validate.split('/')[0]),
-						exp_year: parseInt(values.validate.split('/')[1])
+						exp_year: parseInt(values.validate.split('/')[1]),
+						cvv: values.cvv
 					},
 					installments: 1
 				},
