@@ -5,4 +5,5 @@ export interface DateModel {
 	getYear(): number
 	formatDateString(date: string | number): string
 	currentDate(): string
+	toApi(value: string): string
 }
