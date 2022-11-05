@@ -21,8 +21,8 @@ import { Option } from '@/components/ui/select/types'
 import { GetCepActions } from '@/store/cep/action'
 import { DateUtils } from '@/utils'
 import { AddSignatureActions } from '@/store/signature/add/action'
-import style from './index.module.css'
 import { GetAllPlansActions } from '@/store/plans/get/action'
+import style from './index.module.css'
 
 export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 	const dateHelper = new DateUtils()

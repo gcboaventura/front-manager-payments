@@ -2,9 +2,10 @@
 	position: absolute;
 	width: 25vw;
 	height: fit-content;
-	top: 0;
-	right: 0;
+	top: 10px;
+	right: 10px;
 	padding-top: 20px;
 	display: flex;
 	flex-direction: column;
+	z-index: 100000;
 }
