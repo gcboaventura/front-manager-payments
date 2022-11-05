@@ -1,5 +1,7 @@
 export interface RequestGetCep {
 	cep: string
+	onSuccess?: (data?: any) => void
+	onFalied?: (error?: any) => void
 }
 
 export interface ResponseGetCep {
