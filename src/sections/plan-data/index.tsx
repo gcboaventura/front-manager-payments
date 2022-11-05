@@ -5,7 +5,6 @@ import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
-import { UserHelper } from '@/utils'
 import style from './index.module.css'
 import { User } from '@/models'
 import { NotUser } from './not-user'
@@ -26,12 +25,6 @@ export const PlanData: FC = (): JSX.Element => {
 		plans: state.plans.getAll,
 		isLoading: state.plans.getAll.isLoading || state.plans.update.isLoading
 	}))
-
-	const userLocal = new UserHelper().get()
-
-	if (user) {
-		setuser(userLocal)
-	}
 
 	useEffect(() => {}, [])
 
@@ -58,6 +51,7 @@ export const PlanData: FC = (): JSX.Element => {
 		setTitle('Assinar')
 		setShow(true)
 	}
+
 	return (
 		<>
 			<section className={style.section}>
