@@ -16,5 +16,5 @@ export interface Props extends FormSelectProps {
 
 export interface Option {
 	name: string
-	value: number
+	value: number | string
 }

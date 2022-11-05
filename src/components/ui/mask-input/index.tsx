@@ -16,6 +16,7 @@ export const MaskInput: FC<Props> = ({
 	name,
 	required,
 	mask,
+	onChangeVal,
 	...props
 }): JSX.Element => {
 	const [field, meta] = useField(name || 'name')
@@ -33,6 +34,10 @@ export const MaskInput: FC<Props> = ({
 					required={required}
 					{...field}
 					{...props}
+					onChange={(event: any) => {
+						field.onChange(event)
+						onChangeVal && onChangeVal(event.target.value)
+					}}
 				/>
 				{icon && icon}
 			</div>

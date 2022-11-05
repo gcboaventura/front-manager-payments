@@ -12,4 +12,5 @@ export interface Props extends FormControlProps {
 	name: string
 	required?: boolean
 	mask: string
+	onChangeVal?: (value: any) => void
 }
