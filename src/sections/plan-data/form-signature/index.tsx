@@ -132,7 +132,8 @@ export const FormSignature: FC<Props> = ({ onSuccess }): JSX.Element => {
 						number: values.card_number.replaceAll(' ', ''),
 						exp_month: parseInt(values.validate.split('/')[0]),
 						exp_year: parseInt(values.validate.split('/')[1])
-					}
+					},
+					installments: 1
 				},
 				onSuccess: (data: any) => onSuccess && onSuccess(data)
 			})
