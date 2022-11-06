@@ -1,3 +1,4 @@
 export interface Props {
-	onConfigure(): void
+	onCreditCard(): void
+	onCancel(): void
 }

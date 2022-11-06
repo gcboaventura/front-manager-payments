@@ -61,9 +61,15 @@ export const PlanData: FC = (): JSX.Element => {
 		}
 	}, [])
 
-	const handleConfigure = (): void => {
+	const handleCreditCard = (): void => {
 		setBody(<></>)
-		setTitle('Minha assinatura')
+		setTitle('Editar cartão de crédito')
+		setShow(true)
+	}
+
+	const handleCancel = (): void => {
+		setBody(<></>)
+		setTitle('Cancelar minha assinatura')
 		setShow(true)
 	}
 
@@ -79,7 +85,7 @@ export const PlanData: FC = (): JSX.Element => {
 						{/* {!signature.id && <NotUser addPlan={handleAddPlan} />}
 						{signature.id && <InfoSignature />} */}
 
-						<InfoSignature onConfigure={handleConfigure} />
+						<InfoSignature onCreditCard={handleCreditCard} onCancel={handleCancel} />
 					</div>
 
 					{signature.id && (
