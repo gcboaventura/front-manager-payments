@@ -28,7 +28,8 @@ export const PlanData: FC = (): JSX.Element => {
 			state.plans.update.isLoading ||
 			state.signatue.add.isLoading ||
 			state.signatue.get.isLoading ||
-			state.signatue.cancel.isLoading,
+			state.signatue.cancel.isLoading ||
+			state.signatue.updateCreditCard.isLoading,
 		signature: state.signatue.get.data
 	}))
 
