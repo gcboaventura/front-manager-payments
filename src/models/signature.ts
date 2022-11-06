@@ -89,6 +89,7 @@ export interface Increments {
 }
 
 export interface Card {
+	id?: string
 	number: string
 	holder_name: string
 	exp_month: number
@@ -145,3 +146,16 @@ export interface RequestCancelSignature {
 }
 
 export interface ResponseCancelSignature extends SignatureModel {}
+
+export interface CardUpdate extends Card {
+	card_id: string
+}
+
+export interface RequestUpdateCreditCardSignature {
+	card: CardUpdate
+	signature_id: string
+	onSuccess?: (data?: any) => void
+	onFalied?: (error?: any) => void
+}
+
+export interface ResponseUpdateCreditCardSignature extends SignatureModel {}

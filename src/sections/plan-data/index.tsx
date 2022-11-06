@@ -10,6 +10,7 @@ import { CancelSignature } from './cancel-signature'
 import { NotUser } from './not-user'
 import { FormSignature } from './form-signature'
 import { GetSignatureActions } from '@/store/signature/get/action'
+import { EditCreditCard } from './edit-credit-card'
 import style from './index.module.css'
 
 export const PlanData: FC = (): JSX.Element => {
@@ -64,13 +65,13 @@ export const PlanData: FC = (): JSX.Element => {
 	}, [])
 
 	const handleCreditCard = (): void => {
-		setBody(<></>)
+		setBody(<EditCreditCard success={() => setShow(false)} />)
 		setTitle('Editar cartão de crédito')
 		setShow(true)
 	}
 
 	const handleCancel = (): void => {
-		setBody(<CancelSignature />)
+		setBody(<CancelSignature success={() => setShow(false)} />)
 		setTitle('Cancelar minha assinatura')
 		setShow(true)
 	}
@@ -84,10 +85,10 @@ export const PlanData: FC = (): JSX.Element => {
 					</Row>
 
 					<div>
-						{/* {!signature.id && <NotUser addPlan={handleAddPlan} />}
-						{signature.id && <InfoSignature />} */}
-
-						<InfoSignature onCreditCard={handleCreditCard} onCancel={handleCancel} />
+						{!signature.id && <NotUser addPlan={handleAddPlan} />}
+						{signature.id && (
+							<InfoSignature onCreditCard={handleCreditCard} onCancel={handleCancel} />
+						)}
 					</div>
 
 					{signature.id && (

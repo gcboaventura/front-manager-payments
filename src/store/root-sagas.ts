@@ -11,6 +11,8 @@ import { CancelSignatureActionKeys } from './signature/cancel/action'
 import { fetchCancelSignature } from './signature/cancel/sagas'
 import { GetSignatureActionKeys } from './signature/get/action'
 import { fetchGetSignature } from './signature/get/sagas'
+import { UpdateCreditCardSignatureActionKeys } from './signature/update-credit-card/action'
+import { fetchUpdateCreditCardSignature } from './signature/update-credit-card/sagas'
 
 export function* rootSaga() {
 	yield all([
@@ -19,6 +21,10 @@ export function* rootSaga() {
 		takeLatest(GetCepActionKeys.FETCH_GET_CEP_START, fetchGetCep),
 		takeLatest(AddSignatureActionKeys.FETCH_ADD_SIGNATURE_START, fetchAddSignature),
 		takeLatest(GetSignatureActionKeys.FETCH_GET_SIGNATURE_START, fetchGetSignature),
-		takeLatest(CancelSignatureActionKeys.FETCH_CANCEL_SIGNATURE_START, fetchCancelSignature)
+		takeLatest(CancelSignatureActionKeys.FETCH_CANCEL_SIGNATURE_START, fetchCancelSignature),
+		takeLatest(
+			UpdateCreditCardSignatureActionKeys.FETCH_UPDATE_CREDIT_CARD_SIGNATURE_START,
+			fetchUpdateCreditCardSignature
+		)
 	])
 }

@@ -2,14 +2,20 @@ import { Button, Title } from '@/components'
 import { CancelSignatureActions } from '@/store/signature/cancel/action'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
+import { Props } from './types'
 
-export const CancelSignature: FC = (): JSX.Element => {
+export const CancelSignature: FC<Props> = ({ success }): JSX.Element => {
 	const dispatch = useDispatch()
 
 	const fetchCancelSignature = (): void => {
 		const id = localStorage.getItem('id')
 		if (id) {
-			dispatch(CancelSignatureActions.fetchCancelSignature({ id: JSON.parse(id) }))
+			dispatch(
+				CancelSignatureActions.fetchCancelSignature({
+					id: JSON.parse(id),
+					onSuccess: () => success()
+				})
+			)
 		}
 	}
 

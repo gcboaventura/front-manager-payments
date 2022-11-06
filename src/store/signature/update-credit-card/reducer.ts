@@ -1,7 +1,7 @@
-import { GetSignatureState } from './state'
-import { GetSignatureActionUnion, GetSignatureActionKeys } from './action'
+import { UpdateCreditCardSignatureState } from './state'
+import { UpdateCreditCardSignatureActionUnion, UpdateCreditCardSignatureActionKeys } from './action'
 
-const initialState: GetSignatureState = {
+const initialState: UpdateCreditCardSignatureState = {
 	data: {
 		plan_id: '',
 		payment_method: 'credit_card',
@@ -33,7 +33,6 @@ const initialState: GetSignatureState = {
 			birthdate: ''
 		},
 		card: {
-			id: '',
 			number: '',
 			holder_name: '',
 			exp_month: 0,
@@ -87,23 +86,23 @@ const initialState: GetSignatureState = {
 	isLoading: false
 }
 
-const GetSignatureReducer = (
+const UpdateCreditCardSignatureReducer = (
 	state = initialState,
-	action: GetSignatureActionUnion
-): GetSignatureState => {
+	action: UpdateCreditCardSignatureActionUnion
+): UpdateCreditCardSignatureState => {
 	switch (action.type) {
-		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_START:
+		case UpdateCreditCardSignatureActionKeys.FETCH_UPDATE_CREDIT_CARD_SIGNATURE_START:
 			return {
 				...state,
 				isLoading: true
 			}
-		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_SUCCESS:
+		case UpdateCreditCardSignatureActionKeys.FETCH_UPDATE_CREDIT_CARD_SIGNATURE_SUCCESS:
 			return {
 				...state,
 				data: action.payload,
 				isLoading: false
 			}
-		case GetSignatureActionKeys.FETCH_GET_SIGNATURE_FALIED:
+		case UpdateCreditCardSignatureActionKeys.FETCH_UPDATE_CREDIT_CARD_SIGNATURE_FALIED:
 			return {
 				...state,
 				error: action.payload,
@@ -114,4 +113,4 @@ const GetSignatureReducer = (
 	}
 }
 
-export default GetSignatureReducer
+export default UpdateCreditCardSignatureReducer
