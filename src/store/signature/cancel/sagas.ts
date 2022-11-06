@@ -1,7 +1,6 @@
 import { SignatureAPI } from '@/data'
 import { AlertActions } from '@/store/alert/action'
 import { call, put } from 'redux-saga/effects'
-import { GetSignatureActions } from '../get/action'
 import { fetchCancelSignatureAction, CancelSignatureActions } from './action'
 
 export function* fetchCancelSignature(action: fetchCancelSignatureAction) {
@@ -15,8 +14,6 @@ export function* fetchCancelSignature(action: fetchCancelSignatureAction) {
 		yield put(CancelSignatureActions.fetchCancelSignatureSuccess(data))
 
 		localStorage.removeItem('id')
-
-		yield put(GetSignatureActions.fetchGetSignature({ id: '' }))
 
 		yield put(
 			AlertActions.ShowAlert({

@@ -3,9 +3,12 @@ import { CancelSignatureActions } from '@/store/signature/cancel/action'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { Props } from './types'
+import { useRouter } from 'next/router'
 
 export const CancelSignature: FC<Props> = ({ success }): JSX.Element => {
 	const dispatch = useDispatch()
+
+	const router = useRouter()
 
 	const fetchCancelSignature = (): void => {
 		const id = localStorage.getItem('id')
@@ -13,7 +16,10 @@ export const CancelSignature: FC<Props> = ({ success }): JSX.Element => {
 			dispatch(
 				CancelSignatureActions.fetchCancelSignature({
 					id: JSON.parse(id),
-					onSuccess: () => success()
+					onSuccess: () => {
+						router.reload()
+						success()
+					}
 				})
 			)
 		}
