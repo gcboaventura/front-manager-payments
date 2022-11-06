@@ -18,8 +18,6 @@ export const PlanData: FC = (): JSX.Element => {
 
 	const [body, setBody] = useState<ReactNode>()
 
-	const [user, setuser] = useState<string | null>(null)
-
 	const dispatch = useDispatch()
 
 	const { isLoading, signature } = useSelector((state: RootState) => ({
@@ -59,7 +57,6 @@ export const PlanData: FC = (): JSX.Element => {
 		const userId = localStorage.getItem('id')
 
 		if (userId) {
-			setuser(userId)
 			dispatch(GetSignatureActions.fetchGetSignature({ id: JSON.parse(userId) }))
 		}
 	}, [])
@@ -73,11 +70,11 @@ export const PlanData: FC = (): JSX.Element => {
 					</Row>
 
 					<div>
-						{!user && <NotUser addPlan={handleAddPlan} />}
-						{user && <InfoSignature />}
+						{!signature.id && <NotUser addPlan={handleAddPlan} />}
+						{signature.id && <InfoSignature />}
 					</div>
 
-					{user && (
+					{signature.id && (
 						<>
 							<div className="col-md-12">
 								<KPIs />
