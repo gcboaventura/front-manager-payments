@@ -7,6 +7,8 @@ import { UpdatePlanActionKeys } from './plans/update/action'
 import { fetchUpdatePlan } from './plans/update/sagas'
 import { AddSignatureActionKeys } from './signature/add/action'
 import { fetchAddSignature } from './signature/add/sagas'
+import { CancelSignatureActionKeys } from './signature/cancel/action'
+import { fetchCancelSignature } from './signature/cancel/sagas'
 import { GetSignatureActionKeys } from './signature/get/action'
 import { fetchGetSignature } from './signature/get/sagas'
 
@@ -16,6 +18,7 @@ export function* rootSaga() {
 		takeLatest(UpdatePlanActionKeys.FETCH_UPDATE_PLAN_START, fetchUpdatePlan),
 		takeLatest(GetCepActionKeys.FETCH_GET_CEP_START, fetchGetCep),
 		takeLatest(AddSignatureActionKeys.FETCH_ADD_SIGNATURE_START, fetchAddSignature),
-		takeLatest(GetSignatureActionKeys.FETCH_GET_SIGNATURE_START, fetchGetSignature)
+		takeLatest(GetSignatureActionKeys.FETCH_GET_SIGNATURE_START, fetchGetSignature),
+		takeLatest(CancelSignatureActionKeys.FETCH_CANCEL_SIGNATURE_START, fetchCancelSignature)
 	])
 }

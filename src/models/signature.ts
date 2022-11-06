@@ -137,3 +137,11 @@ export interface CurrentCycle {
 	end_at: string
 	billing_at: string
 }
+
+export interface RequestCancelSignature {
+	id: string
+	onSuccess?: (data?: any) => void
+	onFalied?: (error?: any) => void
+}
+
+export interface ResponseCancelSignature extends SignatureModel {}

@@ -5,11 +5,12 @@ import { Invoices } from './invoices'
 import { Loading, Modal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/config-store'
+import { InfoSignature } from './info-signature'
+import { CancelSignature } from './cancel-signature'
 import { NotUser } from './not-user'
 import { FormSignature } from './form-signature'
 import { GetSignatureActions } from '@/store/signature/get/action'
 import style from './index.module.css'
-import { InfoSignature } from './info-signature'
 
 export const PlanData: FC = (): JSX.Element => {
 	const [show, setShow] = useState<boolean>(false)
@@ -25,7 +26,8 @@ export const PlanData: FC = (): JSX.Element => {
 			state.plans.getAll.isLoading ||
 			state.plans.update.isLoading ||
 			state.signatue.add.isLoading ||
-			state.signatue.get.isLoading,
+			state.signatue.get.isLoading ||
+			state.signatue.cancel.isLoading,
 		signature: state.signatue.get.data
 	}))
 
@@ -68,7 +70,7 @@ export const PlanData: FC = (): JSX.Element => {
 	}
 
 	const handleCancel = (): void => {
-		setBody(<></>)
+		setBody(<CancelSignature />)
 		setTitle('Cancelar minha assinatura')
 		setShow(true)
 	}
