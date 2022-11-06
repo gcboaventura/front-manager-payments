@@ -40,7 +40,7 @@ export class DateUtils implements DateModel {
 	}
 
 	currentDate(): string {
-		return moment().format()
+		return moment().format('DD/MM/YYYY')
 	}
 
 	toApi(value: string): string {
