@@ -1,11 +1,13 @@
 import { FC } from 'react'
-import { CreditCardComponent, Title, Caption, Text } from '@/components'
+import { CreditCardComponent, Title, Caption, Text, Engine } from '@/components'
 import { RootState } from '@/store/config-store'
 import { useSelector } from 'react-redux'
 import { MoneyUtils } from '@/utils'
 import { BillingType, Interval } from '@/models'
+import { Props } from './types'
+import style from './index.module.css'
 
-export const InfoSignature: FC = (): JSX.Element => {
+export const InfoSignature: FC<Props> = ({ onConfigure }): JSX.Element => {
 	const { signature } = useSelector((state: RootState) => ({
 		signature: state.signatue.get.data
 	}))
@@ -44,14 +46,16 @@ export const InfoSignature: FC = (): JSX.Element => {
 		<div className="d-flex">
 			<div className="col-md-6 bg-white rounded-2 shadow-sm p-3">
 				<div className="d-flex">
-					<div className="col-md-11">
+					<div className="d-flex flex-column align-items-start justify-content-between col-md-11">
 						<Caption className="h4 text-secondary">Seu plano</Caption>
 						<Title className="h3">{moneyHelper.format(signature.plan.minimum_price || 0)}</Title>
 						<p className="h6 text-secondary">
 							{handleBilling(signature?.billing_type)} - {handleTrial(signature.interval)}
 						</p>
 					</div>
-					<div className="col-md-1"></div>
+					<div className="col-md-1">
+						<Engine className={style.engine} onClick={onConfigure} />
+					</div>
 				</div>
 			</div>
 			<div className="col-md-6">

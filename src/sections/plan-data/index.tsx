@@ -61,6 +61,12 @@ export const PlanData: FC = (): JSX.Element => {
 		}
 	}, [])
 
+	const handleConfigure = (): void => {
+		setBody(<></>)
+		setTitle('Minha assinatura')
+		setShow(true)
+	}
+
 	return (
 		<>
 			<section className={style.section}>
@@ -70,8 +76,10 @@ export const PlanData: FC = (): JSX.Element => {
 					</Row>
 
 					<div>
-						{!signature.id && <NotUser addPlan={handleAddPlan} />}
-						{signature.id && <InfoSignature />}
+						{/* {!signature.id && <NotUser addPlan={handleAddPlan} />}
+						{signature.id && <InfoSignature />} */}
+
+						<InfoSignature onConfigure={handleConfigure} />
 					</div>
 
 					{signature.id && (
